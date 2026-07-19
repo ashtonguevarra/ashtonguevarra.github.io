@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-heading: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --color-primary: oklch(0.2103 0.0059 285.89);
+  --color-on-primary: oklch(1.0 0 0);
+  --color-secondary: oklch(0.3703 0.0119 285.81);
+  --color-accent: oklch(0.5461 0.2152 262.88);
+  --color-background: oklch(0.9851 0 0);
+  --color-foreground: oklch(0.1408 0.0044 285.82);
+  --color-muted: oklch(0.9412 0.0069 247.9);
+  --color-border: oklch(0.9197 0.004 286.32);
+  --color-destructive: oklch(0.5771 0.2152 27.33);
+  --color-ring: oklch(0.2103 0.0059 285.89);
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-ring;
+}
+
+/* Smooth transitions for interactive elements */
+a, button, .btn {
+  @apply transition-all duration-200 ease-out;
+}
+
+/* CTA primary button */
+.btn-primary {
+  @apply inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold cursor-pointer;
+  @apply hover:opacity-90 active:scale-[0.97];
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply inline-flex items-center gap-2 bg-transparent text-foreground border-2 border-foreground px-6 py-3 rounded-lg font-semibold cursor-pointer;
+  @apply hover:bg-foreground hover:text-background active:scale-[0.97];
+}
+
+/* Card base */
+.card {
+  @apply bg-background rounded-xl p-6 shadow-md border border-border cursor-pointer;
+  @apply hover:shadow-lg hover:-translate-y-0.5;
+}
+
+/* Input base */
+.input {
+  @apply w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground;
+  @apply focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20;
+  @apply placeholder:text-secondary/50;
+}
+
+/* Section alternating backgrounds */
+.section-alt {
+  @apply bg-muted/50;
+}
