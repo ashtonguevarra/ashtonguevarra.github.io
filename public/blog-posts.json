@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Building a REST API with Go",
+    "slug": "building-with-golang",
+    "path": "blog/building-with-golang.html",
+    "excerpt": "A clean, modular approach to structuring a Go API — from routing to database integration.",
+    "tags": ["Go"],
+    "read_time": 5,
+    "created_at": "2025-07-14T00:00:00Z",
+    "updated_at": "2025-07-14T00:00:00Z"
+  },
+  {
+    "title": "Setting Up CI/CD with GitHub Actions",
+    "slug": "setting-up-ci-cd",
+    "path": "blog/setting-up-ci-cd.html",
+    "excerpt": "How I automated testing, linting, and deployment for my personal projects — saving time and catching bugs earlier.",
+    "tags": ["DevOps"],
+    "read_time": 4,
+    "created_at": "2025-06-28T00:00:00Z",
+    "updated_at": "2025-06-28T00:00:00Z"
+  },
+  {
+    "title": "Learning System Design as a Student",
+    "slug": "learning-system-design",
+    "path": "blog/learning-system-design.html",
+    "excerpt": "A beginner-friendly guide to understanding system design concepts without getting overwhelmed.",
+    "tags": ["Learning"],
+    "read_time": 6,
+    "created_at": "2025-06-10T00:00:00Z",
+    "updated_at": "2025-06-10T00:00:00Z"
+  }
+]

@@ -1,24 +1,33 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Projects by Ashton Guevarra — Computer Science student." />
-    <meta name="theme-color" content="#08080f" />
+    <meta name="theme-color" content="#D0E7E6" />
     <title>Projects — Ashton Guevarra</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="grid-paper">
     <!-- Navigation -->
     <nav>
       <div class="nav-inner">
-        <a href="./" class="logo">Ashton<span>.</span></a>
+        <a href="./" class="logo" aria-label="Ashton Guevarra Home"><span class="logo-text">Ashton</span></a>
         <ul class="nav-links">
           <li><a href="./">Home</a></li>
           <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./blog.html">Blog</a></li>
           <li><a href="./contact.html">Contact</a></li>
         </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
         <button class="menu-toggle" aria-label="Toggle menu">
           <span></span>
           <span></span>
@@ -31,8 +40,15 @@
     <!-- Page Header -->
     <header class="page-header">
       <span class="label">Portfolio</span>
-      <h1>My Projects</h1>
-      <p>Here are some things I've built. Each project taught me something new — click through to see the code and live demos.</p>
+      <pre class="ascii-header"> _____ ______       ___    ___      ________  ________  ________        ___  _______   ________ _________  ________
+|\   _ \  _   \    |\  \  /  /|    |\   __  \|\   __  \|\   __  \      |\  \|\  ___ \ |\   ____\\___   ___\\   ____\
+\ \  \\\__\ \  \   \ \  \/  / /    \ \  \|\  \ \  \|\  \ \  \|\  \     \ \  \ \   __/|\ \  \___\|___ \  \_\ \  \___|_
+ \ \  \\|__| \  \   \ \    / /      \ \   ____\ \   _  _\ \  \\\  \  __ \ \  \ \  \_|/_\ \  \       \ \  \ \ \_____  \
+  \ \  \    \ \  \   \/  /  /        \ \  \___|\ \  \\  \\ \  \\\  \|\  \\_\  \ \  \_|\ \ \  \____   \ \  \ \|____|\  \
+   \ \__\    \ \__\__/  / /           \ \__\    \ \__\\ _\\ \_______\ \________\ \_______\ \_______\  \ \__\  ____\_\  \
+    \|__|     \|__|\___/ /             \|__|     \|__|\|__|\|_______|\|________|\|_______|\|_______|   \|__| |\_________\
+                  \|___|/                                                                                    \|_________|</pre>
+      <p data-typewriter>Here are some things I've built. Each project taught me something new — click through to see the code and live demos.</p>
     </header>
 
     <!-- Projects -->
@@ -41,7 +57,7 @@
         <div class="projects-grid">
           <!-- Project 1 -->
           <article class="project-card fade-in">
-            <div class="card-icon">🚀</div>
+            <div class="card-number">01</div>
             <h3>Project Alpha</h3>
             <p>A full-stack web application built with React and Node.js that helps users track their daily habits and build better routines.</p>
             <div class="project-tags">
@@ -50,13 +66,16 @@
               <span>PostgreSQL</span>
             </div>
             <a href="#" class="card-link" target="_blank" rel="noopener noreferrer">
-              View project →
+              View project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
             </a>
           </article>
 
           <!-- Project 2 -->
           <article class="project-card fade-in fade-in-delay-1">
-            <div class="card-icon">📊</div>
+            <div class="card-number">02</div>
             <h3>DataDash</h3>
             <p>An interactive dashboard for visualizing CSV data with customizable charts, filters, and export options. Built with Python and D3.js.</p>
             <div class="project-tags">
@@ -65,13 +84,16 @@
               <span>Flask</span>
             </div>
             <a href="#" class="card-link" target="_blank" rel="noopener noreferrer">
-              View project →
+              View project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
             </a>
           </article>
 
           <!-- Project 3 -->
           <article class="project-card fade-in fade-in-delay-2">
-            <div class="card-icon">🎮</div>
+            <div class="card-number">03</div>
             <h3>Terminal Quest</h3>
             <p>A text-based adventure game that runs in the terminal. Features dynamic storytelling, inventory management, and multiple endings.</p>
             <div class="project-tags">
@@ -80,22 +102,28 @@
               <span>JSON</span>
             </div>
             <a href="#" class="card-link" target="_blank" rel="noopener noreferrer">
-              View project →
+              View project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
             </a>
           </article>
 
           <!-- Project 4 -->
           <article class="project-card fade-in fade-in-delay-3">
-            <div class="card-icon">🌐</div>
+            <div class="card-number">04</div>
             <h3>Portfolio Site</h3>
-            <p>This very website! A dark-mode, responsive static site built with plain HTML, CSS, and JavaScript — focusing on performance and clean design.</p>
+            <p>This very website! A minimal, responsive static site built with plain HTML, CSS, and JavaScript — focusing on performance and clean design.</p>
             <div class="project-tags">
               <span>HTML</span>
               <span>CSS</span>
               <span>JavaScript</span>
             </div>
             <a href="#" class="card-link" target="_blank" rel="noopener noreferrer">
-              View project →
+              View project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
             </a>
           </article>
         </div>

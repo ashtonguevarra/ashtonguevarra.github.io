@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Thoughts on software, technology, and learning by Ashton Guevarra." />
+    <meta name="theme-color" content="#D0E7E6" />
+    <title>Blog — Ashton Guevarra</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+  </head>
+  <body class="grid-paper">
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a href="./" class="logo" aria-label="Ashton Guevarra Home"><span class="logo-text">Ashton</span></a>
+        <ul class="nav-links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-overlay"></div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <span class="label">Blog</span>
+      <pre class="ascii-header fade-in" aria-hidden="true">  ___    ___ ________  ________        ________             ________  ___  ___  ___  ___       ___
+ |\  \  /  /|\   __  \|\   __  \      |\   __  \           |\   ____\|\  \|\  \|\  \|\  \     |\  \
+ \ \  \/  / | \  \|\  \ \  \|\  \     \ \  \|\  \  /\      \ \  \___|\ \  \\\  \ \  \ \  \    \ \  \
+  \ \    / / \ \   __  \ \   ____\     \ \__     \/  \      \ \  \    \ \   __  \ \  \ \  \    \ \  \
+   \/  /  /   \ \  \ \  \ \  \___|      \|_/  __     /|      \ \  \____\ \  \ \  \ \  \ \  \____\ \  \____
+ __/  / /      \ \__\ \__\ \__\           /  /_|\   / /       \ \_______\ \__\ \__\ \__\ \_______\ \_______\
+|\___/ /        \|__|\|__|\|__|          /_______   \/         \|_______|\|__|\|__|\|__|\|_______|\|_______|
+\|___/|                                  |_______|\__\</pre>
+      <p data-typewriter>Thoughts on software engineering, system design, and the things I'm learning along the way.</p>
+      </header>
+
+    <!-- Blog Posts (dynamic) -->
+    <main>
+      <div class="page">
+        <div class="blog-grid" id="blog-posts-container">
+          <div class="blog-empty">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+            </svg>
+            <h3>Loading posts...</h3>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <p>&copy; 2025 Ashton Guevarra. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:ashton@example.com">Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

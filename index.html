@@ -1,24 +1,33 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Ashton Guevarra — Computer Science student building software and exploring technology." />
-    <meta name="theme-color" content="#08080f" />
+    <meta name="theme-color" content="#D0E7E6" />
     <title>Ashton Guevarra — Portfolio</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="grid-paper">
     <!-- Navigation -->
     <nav>
       <div class="nav-inner">
-        <a href="./" class="logo">Ashton<span>.</span></a>
+        <a href="./" class="logo" aria-label="Ashton Guevarra Home"><span class="logo-text">Ashton</span></a>
         <ul class="nav-links">
           <li><a href="./">Home</a></li>
           <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./blog.html">Blog</a></li>
           <li><a href="./contact.html">Contact</a></li>
         </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
         <button class="menu-toggle" aria-label="Toggle menu">
           <span></span>
           <span></span>
@@ -30,28 +39,140 @@
 
     <!-- Hero -->
     <section class="hero">
-      <div class="hero-badge fade-in">
-        <span class="dot"></span>
-        Open to opportunities
-      </div>
-      <h1 class="fade-in fade-in-delay-1">
-        Hi, I'm <span class="gradient">Ashton Guevarra</span>
-      </h1>
-      <p class="fade-in fade-in-delay-2">
-        Computer Science student passionate about building clean, efficient software. 
-        I enjoy turning ideas into reality through code, and I'm always exploring 
-        new technologies to grow my craft.
+      <pre class="ascii-art fade-in" aria-hidden="true"> ___  ___  ___          ___   _____ ______
+|\  \|\  \|\  \        |\  \ |\   _ \  _   \
+\ \  \\\  \ \  \       \ \  \\ \  \\__\ \  \
+ \ \   __  \ \  \       \ \  \\ \  \\|__| \  \
+  \ \  \ \  \ \  \       \ \  \\ \  \    \ \  \
+   \ \__\ \__\ \__\       \ \__\\ \__\    \ \__\
+    \|__|\|__|\|__|        \|__| \|__|     \|__|
+
+
+ ________  ________  ___  ___  _________  ________  ________           ________  ___  ___  _______   ___      ___ ________  ________  ________  ________
+|\   __  \|\   ____\|\  \|\  \|\___   ___\\   __  \|\   ___  \        |\   ____\|\  \|\  \|\  ___ \ |\  \    /  /|\   __  \|\   __  \|\   __  \|\   __  \
+\ \  \|\  \ \  \___|\ \  \\\  \|___ \  \_\ \  \|\  \ \  \\ \  \       \ \  \___|\ \  \\\  \ \   __/|\ \  \  /  / | \  \|\  \ \  \|\  \ \  \|\  \ \  \|\  \
+ \ \   __  \ \_____  \ \   __  \   \ \  \ \ \  \\\  \ \  \\ \  \       \ \  \  __\ \  \\\  \ \  \_|/_\ \  \/  / / \ \   __  \ \   _  _\ \   _  _\ \   __  \
+  \ \  \ \  \|____|\  \ \  \ \  \   \ \  \ \ \  \\\  \ \  \\ \  \       \ \  \|\  \ \  \\\  \ \  \_|\ \ \    / /   \ \  \ \  \ \  \\  \\ \  \\  \\ \  \ \  \
+   \ \__\ \__\____\_\  \ \__\ \__\   \ \__\ \ \_______\ \__\\ \__\       \ \_______\ \_______\ \_______\ \__/ /     \ \__\ \__\ \__\\ _\\ \__\\ _\\ \__\ \__\
+    \|__|\|__|\_________\|__|\|__|    \|__|  \|_______|\|__| \|__|        \|_______|\|_______|\|_______|\|__|/       \|__|\|__|\|__|\|__|\|__|\|__|\|__|\|__|
+             \|_________|</pre>
+      <p class="subhead fade-in fade-in-delay-1" data-typewriter>
+        Computer Science student passionate about building clean, efficient software. I enjoy turning ideas into reality through code, and I'm always exploring new technologies to grow my craft.
       </p>
-      <div class="hero-actions fade-in fade-in-delay-3">
+      <div class="hero-actions fade-in fade-in-delay-2">
         <a href="./projects.html" class="btn btn-primary">
           View my work
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
           </svg>
         </a>
-        <a href="./contact.html" class="btn btn-secondary">
+        <a href="./contact.html" class="btn btn-ghost">
           Get in touch
         </a>
+        <a href="#" class="btn btn-ghost" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download CV
+        </a>
+      </div>
+    </section>
+
+    <!-- Language Stack -->
+    <section class="stack-section">
+      <div class="stack-inner">
+        <span class="section-label">Tech Stack</span>
+        <h2>My Language Stack</h2>
+        <p class="stack-desc">Languages and tools I use to build things.</p>
+      </div>
+
+      <div class="marquee marquee-reverse" aria-hidden="true">
+        <div class="marquee-track">
+          <span class="marquee-item">JavaScript</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-item">Go</span>
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">HTML/CSS</span>
+          <span class="marquee-item">React</span>
+          <span class="marquee-item">Node.js</span>
+          <span class="marquee-item">SQL</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">Linux</span>
+          <span class="marquee-item">Git</span>
+          <span class="marquee-item">Supabase</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="marquee-item">JavaScript</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-item">Go</span>
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">HTML/CSS</span>
+          <span class="marquee-item">React</span>
+          <span class="marquee-item">Node.js</span>
+          <span class="marquee-item">SQL</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">Linux</span>
+          <span class="marquee-item">Git</span>
+          <span class="marquee-item">Supabase</span>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span class="marquee-item">Go</span>
+          <span class="marquee-item">JavaScript</span>
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">Supabase</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">HTML/CSS</span>
+          <span class="marquee-item">Node.js</span>
+          <span class="marquee-item">React</span>
+          <span class="marquee-item">Linux</span>
+          <span class="marquee-item">Git</span>
+          <span class="marquee-item">SQL</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="marquee-item">Go</span>
+          <span class="marquee-item">JavaScript</span>
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">Supabase</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">HTML/CSS</span>
+          <span class="marquee-item">Node.js</span>
+          <span class="marquee-item">React</span>
+          <span class="marquee-item">Linux</span>
+          <span class="marquee-item">Git</span>
+          <span class="marquee-item">SQL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Python Certification -->
+    <section class="cert-section fade-in">
+      <div class="stack-inner">
+        <span class="section-label">Credentials</span>
+        <h2>Python Certification</h2>
+        <p class="stack-desc">Professional certification earned through coursework and examination.</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h3>PCAP — Certified Associate in Python Programming</h3>
+          <p>Python Institute · Issued 2025 · Credential ID: PCAP-XX-XXXX</p>
+          <span class="cert-badge">Verified</span>
+          <div class="cv-download">
+            <a href="#" class="btn-download" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+              </svg>
+              View Credentials
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 

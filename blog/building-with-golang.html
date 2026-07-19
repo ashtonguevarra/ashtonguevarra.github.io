@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A walkthrough of setting up a clean, modular REST API in Go." />
+    <meta name="theme-color" content="#E1F7F5" />
+    <title>Building a REST API with Go — Ashton Guevarra</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F4BB;</text></svg>" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="grid-paper">
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a href="../" class="logo" aria-label="Ashton Guevarra Home"><span class="logo-ascii">Ashton Guevarra</span></a>
+        <ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-overlay"></div>
+
+    <!-- Article -->
+    <main>
+      <article class="article-page">
+        <header class="article-header">
+          <a href="../blog.html" class="article-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+            Back to blog
+          </a>
+          <div class="article-meta">
+            <span class="blog-tag">Go</span>
+            <time datetime="2025-07-14">Jul 14, 2025</time>
+            <span>· 5 min read</span>
+          </div>
+          <h1>Building a REST API with Go</h1>
+          <p class="article-subtitle">A clean, modular approach to structuring a Go API — from routing to database integration.</p>
+        </header>
+
+        <div class="article-content">
+          <p>Go has quickly become one of my favourite languages for building backend services. Its simplicity, fast compilation, and excellent standard library make it a joy to work with. In this post, I'll walk through how I structure a REST API project in Go.</p>
+
+          <h2>Why Go?</h2>
+          <p>Before diving into the code, here's why I reach for Go when starting a new API project:</p>
+          <ul>
+            <li><strong>Minimal boilerplate</strong> — You can build a production-ready API with just the standard library.</li>
+            <li><strong>Great performance</strong> — Compiled to a single binary, low memory footprint, fast startup.</li>
+            <li><strong>Excellent tooling</strong> — Built-in formatting, testing, and linting tools.</li>
+            <li><strong>Concurrency primitives</strong> — Goroutines and channels make handling concurrent requests straightforward.</li>
+          </ul>
+
+          <h2>Project Structure</h2>
+          <p>Here's the directory layout I typically use:</p>
+
+          <pre><code>project/
+├── cmd/
+│   └── api/
+│       └── main.go
+├── internal/
+│   ├── handler/
+│   ├── model/
+│   ├── repository/
+│   └── service/
+├── pkg/
+│   └── middleware/
+├── go.mod
+└── go.sum</code></pre>
+
+          <p>The <code>cmd/api/main.go</code> file is the entry point. The <code>internal</code> directory contains application-specific code that shouldn't be imported by external packages. The <code>pkg</code> directory holds reusable middleware and utilities.</p>
+
+          <h2>Setting Up the Router</h2>
+          <p>For routing, I use the <code>net/http</code> standard library along with Go 1.22's new pattern-matching support:</p>
+
+          <pre><code>package main
+
+import (
+    "log"
+    "net/http"
+    "project/internal/handler"
+)
+
+func main() {
+    mux := http.NewServeMux()
+
+    mux.HandleFunc("GET /api/health", handler.HealthCheck)
+    mux.HandleFunc("GET /api/items", handler.ListItems)
+    mux.HandleFunc("POST /api/items", handler.CreateItem)
+
+    server := &http.Server{
+        Addr:    ":8080",
+        Handler: mux,
+    }
+
+    log.Println("Server starting on :8080")
+    log.Fatal(server.ListenAndServe())
+}</code></pre>
+
+          <h2>Adding Middleware</h2>
+          <p>Middleware is easy to compose. Here's a simple logging middleware:</p>
+
+          <pre><code>func Logging(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        start := time.Now()
+        next.ServeHTTP(w, r)
+        log.Printf(
+            "%s %s %s",
+            r.Method, r.RequestURI, time.Since(start),
+        )
+    })
+}</code></pre>
+
+          <h2>Database Integration</h2>
+          <p>I use the <code>database/sql</code> package with PostgreSQL. Here's a simple repository pattern:</p>
+
+          <pre><code>type ItemRepository struct {
+    db *sql.DB
+}
+
+func (r *ItemRepository) FindAll(ctx context.Context) ([]Item, error) {
+    rows, err := r.db.QueryContext(ctx, "SELECT id, name FROM items")
+    if err != nil {
+        return nil, err
+    }
+    defer rows.Close()
+
+    var items []Item
+    for rows.Next() {
+        var item Item
+        if err := rows.Scan(&item.ID, &item.Name); err != nil {
+            return nil, err
+        }
+        items = append(items, item)
+    }
+    return items, rows.Err()
+}</code></pre>
+
+          <h2>Key Takeaways</h2>
+          <p>Go's philosophy of simplicity and explicitness makes it a great choice for building APIs. The standard library covers most needs, and the ecosystem of third-party packages is mature and well-maintained.</p>
+
+          <p>The most important lesson I've learned is to keep things simple. Don't abstract too early — let the project's needs drive the architecture, not the other way around.</p>
+        </div>
+
+        <footer class="article-footer">
+          <p>Thanks for reading! If you found this helpful, feel free to <a href="../contact.html">reach out</a> or connect on <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+        </footer>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <p>&copy; 2025 Ashton Guevarra. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:ashton@example.com">Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>

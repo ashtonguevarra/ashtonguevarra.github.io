@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="How to automate testing, linting, and deployment with GitHub Actions." />
+    <meta name="theme-color" content="#E1F7F5" />
+    <title>Setting Up CI/CD with GitHub Actions — Ashton Guevarra</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F4BB;</text></svg>" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="grid-paper">
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a href="../" class="logo" aria-label="Ashton Guevarra Home"><span class="logo-ascii">Ashton Guevarra</span></a>
+        <ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-overlay"></div>
+
+    <!-- Article -->
+    <main>
+      <article class="article-page">
+        <header class="article-header">
+          <a href="../blog.html" class="article-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+            Back to blog
+          </a>
+          <div class="article-meta">
+            <span class="blog-tag">DevOps</span>
+            <time datetime="2025-06-28">Jun 28, 2025</time>
+            <span>· 4 min read</span>
+          </div>
+          <h1>Setting Up CI/CD with GitHub Actions</h1>
+          <p class="article-subtitle">How I automated testing, linting, and deployment for my personal projects — saving time and catching bugs earlier.</p>
+        </header>
+
+        <div class="article-content">
+          <p>Before I discovered CI/CD, my workflow was simple: write code, run tests locally, push to GitHub, and then manually deploy. It worked — until I forgot to run tests one day and pushed a broken build. That's when I decided to automate the whole thing.</p>
+
+          <h2>What is CI/CD?</h2>
+          <p>CI/CD stands for <strong>Continuous Integration</strong> and <strong>Continuous Deployment</strong>. In short:</p>
+          <ul>
+            <li><strong>CI</strong> — Every time you push code, the system automatically builds and tests it.</li>
+            <li><strong>CD</strong> — If the tests pass, the system automatically deploys the changes to production.</li>
+          </ul>
+          <p>GitHub Actions makes this incredibly easy — everything lives in a <code>.github/workflows</code> directory in your repository.</p>
+
+          <h2>My First Workflow</h2>
+          <p>Here's a simple workflow that runs tests on every push:</p>
+
+          <pre><code>name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test</code></pre>
+
+          <p>Breaking this down:</p>
+          <ul>
+            <li><strong>on:</strong> — Triggers the workflow when code is pushed to main or a PR is opened.</li>
+            <li><strong>jobs:</strong> — Defines what to do. Each job runs on a fresh virtual machine.</li>
+            <li><strong>steps:</strong> — The individual actions: checkout code, set up Node, install deps, lint, and test.</li>
+          </ul>
+
+          <h2>Adding a Deploy Step</h2>
+          <p>Once the tests pass, I want to deploy automatically. Here's how I deploy to GitHub Pages:</p>
+
+          <pre><code>deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run build
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist</code></pre>
+
+          <p>Notice the <code>needs: test</code> — this ensures the deploy only runs if the test job succeeds. The <code>if</code> condition means it only deploys from the main branch.</p>
+
+          <h2>Secrets Management</h2>
+          <p>For API keys or deployment tokens, GitHub Actions has a built-in secrets manager. Go to your repository Settings → Secrets and variables → Actions to add them. Then reference them in your workflow with <code>${{ secrets.MY_SECRET }}</code>.</p>
+
+          <p>Never hardcode secrets in your workflow files. If you accidentally commit one, rotate it immediately and use <code>git filter-branch</code> to remove it from history.</p>
+
+          <h2>What I Learned</h2>
+          <p>Setting up CI/CD was one of the best productivity investments I've made. The key benefits:</p>
+          <ul>
+            <li><strong>Confidence</strong> — I know every push is tested before it reaches production.</li>
+            <li><strong>Speed</strong> — Automation is faster than manual processes, especially for repetitive tasks.</li>
+            <li><strong>Consistency</strong> — The same steps run every time, eliminating human error.</li>
+          </ul>
+          <p>If you haven't set up CI/CD for your projects yet, start small — just run your tests on push. You can always add more steps later.</p>
+        </div>
+
+        <footer class="article-footer">
+          <p>Thanks for reading! If you found this helpful, feel free to <a href="../contact.html">reach out</a> or connect on <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+        </footer>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <p>&copy; 2025 Ashton Guevarra. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:ashton@example.com">Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>
