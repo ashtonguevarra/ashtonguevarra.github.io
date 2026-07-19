@@ -112,7 +112,6 @@ function initForm() {
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
 
-    // Simple validation
     if (!data.name || !data.email || !data.message) {
       showFormMessage('Please fill in all fields before sending.', 'error');
       return;
@@ -123,14 +122,23 @@ function initForm() {
       return;
     }
 
-    // Simulate sending
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      showFormMessage('Thanks for reaching out! I\'ll get back to you soon.', 'success');
-      contactForm.reset();
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        showFormMessage('Thanks for reaching out! I\'ll get back to you soon.', 'success');
+        contactForm.reset();
+      } else {
+        showFormMessage(result.message || 'Something went wrong. Please try again.', 'error');
+      }
     } catch (err) {
       showFormMessage('Something went wrong. Please try again.', 'error');
     } finally {
