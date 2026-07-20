@@ -287,3 +287,77 @@ function escapeHtml(str) {
   div.textContent = str;
   return div.innerHTML;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const log = document.getElementById("log");
+  if (!log) return;
+
+  const LINES = [
+    "$ aws s3 sync ./site s3://portfolio --delete",
+    'upload: index.html  <span class="ok">200 OK</span>',
+    'upload: style.css   <span class="ok">200 OK</span>',
+    'upload: main.js     <span class="ok">200 OK</span>',
+    "",
+    "$ curl https://your-site-url.com",
+    '<span class="warn">403 AccessDenied</span>  # correct. bucket is private.',
+    "",
+    '$ aws cloudfront create-invalidation --paths "/*"',
+    'status: <span class="ok">Completed</span>',
+    "",
+    '<span class="ok">✓ live</span>  block public access: <span class="ok">ON</span>'
+  ];
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduce) {
+    log.innerHTML = LINES.join("\n");
+    return;
+  }
+
+  let line = 0;
+  let char = 0;
+  let out = "";
+
+  function tick() {
+    if (line >= LINES.length) {
+      log.innerHTML = out + '<span class="caret"></span>';
+      return;
+    }
+
+    const current = LINES[line];
+
+    if (current === "") {
+      out += "\n";
+      line++;
+      char = 0;
+      log.innerHTML = out + '<span class="caret"></span>';
+      setTimeout(tick, 120);
+      return;
+    }
+
+    if (current[char] === "<") {
+      const close = current.indexOf(">", char);
+      out += current.slice(char, close + 1);
+      char = close + 1;
+      tick();
+      return;
+    }
+
+    out += current[char];
+    char++;
+
+    if (char >= current.length) {
+      out += "\n";
+      line++;
+      char = 0;
+      log.innerHTML = out + '<span class="caret"></span>';
+      setTimeout(tick, 220);
+      return;
+    }
+
+    log.innerHTML = out + '<span class="caret"></span>';
+    setTimeout(tick, 16);
+  }
+
+  tick();
+});
