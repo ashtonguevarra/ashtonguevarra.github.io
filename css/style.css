@@ -1696,14 +1696,24 @@ hr {
    Language Stack Section
    =========================== */
 .stack-section {
-  padding: 48px 24px 60px;
-  max-width: var(--max-width);
-  margin: 0 auto;
+  padding: 48px 0 60px;
+  max-width: none;
+  width: 100%;
   overflow: hidden;
 }
 
 .stack-inner {
-  margin-bottom: 48px;
+  max-width: var(--max-width);
+  margin: 0 auto 48px;
+  padding: 0 24px;
+}
+
+.marquee {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .stack-inner .section-label {
