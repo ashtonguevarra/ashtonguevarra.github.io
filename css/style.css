@@ -2140,17 +2140,73 @@ button:focus-visible {
     flex-wrap:wrap;
 }
 
-.footer-status {
-  margin-left: 24px;
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+/* HERO MOBILE FIX */
+@media (max-width: 768px) {
+  .hero {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 60px 16px 40px;
+  }
+
+  .hero-left,
+  .hero-right {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    right: auto !important;
+    top: auto !important;
+  }
+
+  .hero-right {
+    margin-top: 0;
+  }
+
+  .term {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .term-body {
+    min-height: auto;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* If the typewriter text is inside the hero, stop absolute overlap */
+  [data-typewriter] .tw-visible {
+    position: static;
+    inset: auto;
+    white-space: pre-wrap;
+  }
+
+  .hero .subhead {
+    max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .view-work-btn {
+    width: 100%;
+  }
 }
 
-.status-dot {
-  color: #22c55e;
-  text-shadow: 0 0 6px rgba(34, 197, 94, 0.8);
+
+@media (max-width: 768px) {
+  [data-typewriter] .tw-ghost {
+    display: none;
+  }
+
+  [data-typewriter] .tw-visible {
+    position: static;
+    inset: auto;
+  }
 }
