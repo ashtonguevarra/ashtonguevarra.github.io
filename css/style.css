@@ -5,6 +5,9 @@
    CSS Custom Properties
    =========================== */
 :root {
+
+  --max-width: 1680px;
+
   /* Light mode (default) */
   --font-heading: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Fira Code', monospace;
   --font-body: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Fira Code', monospace;
@@ -80,12 +83,13 @@ html {
 
 @media (min-width: 769px) {
   html {
-    zoom: 1.4;
+    zoom: 1.5;
   }
 }
 
 html, body {
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -490,7 +494,7 @@ main {
 .project-card {
   position: relative;
   background: var(--color-background);
-  border: 1px solid var(--color-border);
+  border: 3px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 28px;
   transition: all var(--transition-base);
@@ -618,7 +622,7 @@ main {
 /* Contact Form */
 .contact-form {
   background: var(--color-background);
-  border: 1px solid var(--color-border);
+  border: 3px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 32px;
 }
@@ -781,7 +785,7 @@ footer .social-links a {
 
 .blog-card {
   background: var(--color-background);
-  border: 1px solid var(--color-border);
+  border: 3px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 28px;
   transition: all var(--transition-base);
@@ -1706,7 +1710,7 @@ hr {
 .stack-inner {
   max-width: var(--max-width);
   margin: 0 auto 48px;
-  padding: 0 24px;
+  padding: 0 0px;
 }
 
 .marquee {
@@ -1774,7 +1778,7 @@ hr {
   font-weight: 500;
   color: var(--text-secondary);
   background: var(--color-muted);
-  border: 1px solid var(--color-border);
+  border: 3px solid var(--color-border);
   transition: all var(--transition-fast);
   white-space: nowrap;
 }
@@ -1801,7 +1805,7 @@ hr {
 
 /* Certification Section */
 .cert-section {
-  padding: 64px 24px;
+  padding: 0px 24px;
   max-width: var(--max-width);
   margin: 0 auto;
 }
