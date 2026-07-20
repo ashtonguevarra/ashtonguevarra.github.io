@@ -82,7 +82,7 @@ html {
 
 @media (min-width: 769px) {
   html {
-    zoom: 1.5;
+    zoom: 1.4;
   }
 }
 
@@ -2051,7 +2051,7 @@ button:focus-visible {
 }
 
 .term {
-  width: 400px;
+  width: 350px;
   border: 3px solid var(--color-border);
   background: var(--color-background);
   overflow: hidden;
