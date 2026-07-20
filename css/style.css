@@ -6,7 +6,8 @@
    =========================== */
 :root {
 
-  --max-width: 1680px;
+  --max-width: 1100px;
+  --nav-height: 64px;
 
   /* Light mode (default) */
   --font-heading: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Fira Code', monospace;
@@ -40,8 +41,6 @@
   --transition-base: 250ms ease-out;
   --transition-slow: 400ms ease-out;
 
-  --max-width: 1100px;
-  --nav-height: 64px;
 }
 
 [data-theme="dark"] {
@@ -1748,11 +1747,11 @@ hr {
 
 /* Marquee */
 .marquee {
-  margin-left: -24px;
-  margin-right: -24px;
-  width: calc(100% + 48px);
-  display: flex;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   overflow: hidden;
+  display: flex;
   margin-bottom: 20px;
   user-select: none;
 }
