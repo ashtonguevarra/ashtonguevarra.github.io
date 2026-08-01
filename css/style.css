@@ -116,8 +116,8 @@ li {
 
 .bottom-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; /* Splits row into two equal horizontal sections */
-    gap: 50px; /* Separates the modules cleanly */
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    gap: 50px; 
     align-items: start;
     margin-top: 40px;
 }
