@@ -1,9 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script>
-      (function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Ashton Guevarra — Computer Science student building software and exploring technology." />
@@ -15,94 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
   </head>
-  <body class="grid-paper">
-    <!-- Navigation -->
-    <nav>
-      <div class="nav-inner">
-        <a href="./" class="logo" aria-label="Ashton Guevarra Home"><span class="logo-text">Ashton</span></a>
-        <ul class="nav-links">
-          <li><a href="./">Home</a></li>
-          <li><a href="./projects.html">Projects</a></li>
-          <li><a href="./blog.html">Blog</a></li>
-          <li><a href="./contact.html">Contact</a></li>
-        </ul>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </nav>
-    <div class="mobile-overlay"></div>
 
-    <!-- Hero -->
-    <section class="hero">
-      <h1>
-        Hello,<br>I'm Ashton
-      </h1>
-
-      <div class="hero-right">
-
-        <div class="term" role="img" aria-label="Simulated deployment log">
-          <div class="term-head">
-            <span class="tdot"></span>
-            <span class="tdot"></span>
-            <span class="tdot"></span>
-            <span class="term-title">deploy.log</span>
-          </div>
-          <pre class="term-body" id="log"></pre>
-        </div>
-        
-     </div>
-
-<div class="hero-top">
-
-  <p class="subhead fade-in fade-in-delay-1">
-    <b>Backend • Cloud • AI</b>
-    <br>
-    Building scalable software and exploring cloud infrastructure through hackathons, internships, and personal projects.
-  </p>
-
-  <div class="hero-actions fade-in fade-in-delay-2">
-
-    <a href="./projects.html" class="btn btn-primary">
-      View my work
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14"/>
-        <path d="m12 5 7 7-7 7"/>
-      </svg>
-    </a>
-
-    <a href="./contact.html" class="btn btn-outline">
-      Get in touch
-    </a>
-
-    <a href="/Ashton_Guevarra_Resume.pdf" class="btn btn-outline" download>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      Download CV
-    </a>
-
-  </div>
-
-</div>
-
-</section>
-
-    </section>
-    
-   <section class="cert-section fade-in">
-
+  <body>  
+   <section>
     <!-- Language Stack -->
       <div class="marquee marquee-reverse" aria-hidden="true">
         <div class="marquee-track">
@@ -158,59 +70,130 @@
         </div>
       </div>
 
-      <!--  <div class="stack-inner">
-        <h2>Tech Stack</h2>
-        <p class="subhead fade-in fade-in-delay-1" data-typewriter>
-          I work with a variety of programming languages, frameworks, and tools to build efficient and scalable software solutions.
-        </p>
-      </div> -->
-
     </section>
 
-    <!-- Certification -->
-    <section class="cert-section fade-in">
-      <div class="stack-inner">
-        <h2>Certification</h2>
-        <p class="subhead fade-in fade-in-delay-1" data-typewriter> 
-          Professional certification earned through coursework and examination.
-        </p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        <div class="cert-info">
-          <h3>PCAP — Certified Associate in Python Programming</h3>
-          <p>Certiport, a Pearson VUE business · Issued 2026 · Credential ID: w9H6A-FaSQ</p>
-          <span class="cert-badge">Verified</span>
-          <div class="cv-download">
-            <a href="https://www.credly.com/badges/19e2ee05-cdac-43c2-991c-51424830c6d4/public_url" class="btn-download" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-              </svg>
-              View Credentials
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <p class="logo"><span class="logo-text">[Menu]</span></p>
 
-    <!-- Footer -->
+        <ul class="nav-links">
+
+          <li><a href="./">01 About</a></li>
+
+          <li><a href="./projects.html">02 Work</a></li>
+
+          <li><a href="./blog.html">03 Blog</a></li>
+
+          <li><a href="./contact.html">04 Contact</a></li>
+
+        </ul>
+      </div>
+    </nav>
+    <div class="mobile-overlay"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>
+        ASHTON GUEVARRA
+      </h1>
+      <h2> 
+        COMPUTER SCIENCE STUDENT
+        <br>
+        Based in Philippines
+      </h2>
+
+<div class="hero-top">
+
+  <p class="description">
+    Hello, I'm currently a Computer Science student at FEU Institute of Technology. I focus on building software and exploring cloud computing technologies and software development. I have a strong interest in Linux.
+  </p>
+
+  <div class="hero-actions">
+
+    <a href="/Ashton_Guevarra_Resume.pdf" class="btn btn-outline" download>
+      Download CV
+    </a>
+
+  </div>
+
+    <div class="social-links">
+
+      <a href="https://github.com/ashtonguevarra" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+      <a href="https://www.linkedin.com/in/ashton-guevarra-872a51298" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+
+      <a href="mailto:ashtonguevarra1@gmail.com">Email</a>
+          
+    </div>
+
+  <div class="bottom-container">
+
+  <!-- Column 3 -->
+  <section class="stack-section">
+    <p>[Languages]</p>
+    <div class="stack-card">
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>HTML/CSS</li>
+        <li>React</li>
+    </div>
+  </section>
+
+  <!-- Column 4 -->
+  <section class="tools-section">
+    <p>[Tools]</p>
+    <div class="tools-card">
+        <li>Docker</li>
+        <li>Linux</li>
+        <li>Git</li>
+        <li>Supabase</li>
+        <li>Node.js</li>
+        <li>SQL</li>
+    </div>
+  </section>
+
+
+  <!-- Column 1 -->  
+  <section class="cert-section">
+    <p>[Certification]</p>
+    <div class="cert-card">
+      <p>PCAP — Certified Associate in Python Programming</p>
+      <p>Certiport, a Pearson VUE business <br> Issued 2026 <br> Credential ID: w9H6A-FaSQ</p>
+      <div class="cert-download">
+        <a href="https://credly.com"
+           class="btn-download"
+           target="_blank"
+           rel="noopener noreferrer">
+          View Credentials
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+
+  <!-- Footer -->
+  
     <footer>
       <div class="footer-inner">
-        <p>&copy; 2026 Ashton Guevarra. All rights reserved.</p>
+        <p>
 
-        <div class="social-links">
-          <a href="https://github.com/ashtonguevarra" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/ashton-guevarra-872a51298" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="mailto:ashtonguevarra1@gmail.com">Email</a>
-          
-        </div>
+          &copy; 2026 Ashton Guevarra. All rights reserved.
+
+        </p>
+
+        <a href="./contact.html" class="btn btn-outline">
+          Get in touch
+        </a>
+
       </div>
     </footer>
 
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>
+
