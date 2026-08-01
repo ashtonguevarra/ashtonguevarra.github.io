@@ -24,6 +24,7 @@ h1 {
     font-family: "Inter", sans-serif;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
     color: #14279B;
 }
@@ -42,6 +43,10 @@ p {
     max-width: 420px; 
     line-height: 1.4;  
     position: relative;
+}
+
+.nav-inner h1 {
+    font-size: 20px;
 }
 
 
