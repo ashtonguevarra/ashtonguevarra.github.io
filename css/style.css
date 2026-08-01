@@ -220,6 +220,17 @@ button,
         border: none !important;
         padding: 0 !important;
     }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 2px; /* space between number and text */
+        font-size: 15px;
+        white-space: nowrap;
+        min-width: 80px;
+
+    }
 }
 
 @media (max-width: 900px) {
