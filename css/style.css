@@ -101,7 +101,7 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px; 
+    padding: 0px 50px; 
     border-top: 1px solid #14279B;
     background-color: #E6E6E6; 
 
@@ -124,6 +124,7 @@ li {
     gap: 50px; 
     align-items: start;
     margin-top: 40px;
+    padding-bottom: 40px;
 }
 
 
@@ -131,6 +132,15 @@ li {
     width: 100%;
 }
 
+body { 
+  cursor: url('../public/cursor.png'), auto; 
+}
+
+a, 
+button, 
+.hover-target {
+  cursor: url('../public/hover-cursor.png'), pointer;
+}
 
 /* Marquee things */
 
