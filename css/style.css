@@ -1,6 +1,7 @@
 
-:root {
-  --font-body: 'Inter', sans-serif;
+@font-face {
+    font-family: 'Neaubit';
+    src: url('../public/fonts/PPNeueBit-Bold.otf');
 }
 
 body {
@@ -8,20 +9,23 @@ body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 15px;
     background-color: #E6E6E6;
+    border: 1px solid #14279B;
+    padding: 10px;
 
     /* Lock browser zoom scaling */
     zoom: 100%;
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+    cursor: url('../public/cursor.png') 0 0, auto; 
 }
 
 h1 {
-    font-size: 140px;
+    font-size: 220px;
     font-weight: bold;
     margin-bottom: 0px;
     margin-top: 20px;
-    font-family: "Inter", sans-serif;
+    font-family: 'Neaubit';
 }
 
 
@@ -40,7 +44,7 @@ p {
 .description {
     padding-top: 15px;
     width: 100%;
-    max-width: 420px; 
+    max-width: 500px; 
     line-height: 1.4;  
     position: relative;
 }
@@ -67,18 +71,20 @@ li {
 
 .social-links {
     position: fixed;
-    right: 50px; /* Aligns with your body's 50px margin */
+    right: 60px; /* Aligns with your body's 50px margin */
     top: 50%;
     transform: translateY(-50%);
     writing-mode: vertical-rl; 
     display: flex;
     gap: 20px; 
     z-index: 90;
+    border: 1px solid #14279B;
 
 }
 
 .social-links a {
     border: none;
+    padding: 1px;
 }
 
 .hero-actions {
@@ -95,6 +101,7 @@ li {
   list-style: none;
   padding: 0;
   margin: 10px 0;
+  
 }
 
 .footer-inner {
@@ -125,6 +132,8 @@ li {
     align-items: start;
     margin-top: 40px;
     padding-bottom: 40px;
+    border: 1px solid #14279B;
+    padding-left: 10px;
 }
 
 
@@ -139,7 +148,7 @@ body {
 a, 
 button, 
 .hover-target {
-  cursor: url('../public/hover-cursor.png'), pointer;
+  cursor: url('../public/hover-cursor.png') 20 20, pointer;
 }
 
 .contact-page {
@@ -161,6 +170,35 @@ button,
   padding: 10px 0;
 }
 
+.projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+}
+
+.project-one,
+.project-two {
+    border: 1px solid #14279B;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.project-one img,
+.project-two img {
+    border: 1px solid #14279B;
+    padding: 5px;
+}
+
+.project-one a {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  display: inline-block;
+  width: fit-content;
+  padding: 3px;
+}
+
 /* Marquee things */
 
 .marquee {
@@ -172,7 +210,7 @@ button,
 
 .marquee-track {
     display: flex;
-    animation: marquee 40s linear infinite;
+    animation: marquee 90s linear infinite;
 }
 
 .marquee-item {
@@ -182,7 +220,7 @@ button,
 
 .marquee-track {
     display: flex;
-    animation: marquee 40s linear infinite;
+    animation: marquee 90s linear infinite;
 }
 
 .marquee-item {
