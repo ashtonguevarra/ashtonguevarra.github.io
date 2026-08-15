@@ -17,7 +17,6 @@ body {
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    cursor: url('../public/cursor.png') 0 0, auto; 
 }
 
 h1 {
@@ -141,16 +140,6 @@ li {
     width: 100%;
 }
 
-body { 
-  cursor: url('../public/cursor.png'), auto; 
-}
-
-a, 
-button, 
-.hover-target {
-  cursor: url('../public/hover-cursor.png') 20 20, pointer;
-}
-
 .contact-page {
     padding: 10px 0;
 }
@@ -237,9 +226,119 @@ button,
     }
 }
 
+/* blog page */
+.blog {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;
+    border: solid #14279B 1px;
+    margin-bottom: 20px;
+
+}
+
+.blog img {
+    border: solid #14279B 1px;
+    padding: 5px;
+}
+
+.blog-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+}
+
+/* Contact Page */
+
+.page {
+    padding: 10px 500px 20px 500px;
+}
+.contact-page {
+    padding: 20px;
+    border: solid #14279B 1px;
+}
+
+.contact-page input {
+    padding: 10px;
+    border: solid #14279B 1px;
+    background-color: #E6E6E6;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    outline: none;
+}
+
+.form-group textarea {
+    text-decoration: none;
+    border: solid #14279B 1px;
+    background-color: #E6E6E6;
+    resize: none;
+    overflow: hidden;
+    width: 500px;
+    height: 150px;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+}
+.form-group p {
+    grid-column: 2;
+    width: 100%;
+    text-align: right;
+    margin: 8px 0 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-size: 15px;
+    color: #14279B;
+    font-family: 'JetBrains Mono', monospace;  
+}
+
+.form-group label {
+    font-size: 18px;
+    color: #14279B;
+    font-weight: 700;
+}
+
+.contact-form button {
+    background-color: #E6E6E6;
+    color: #14279B;
+    font-size: 15px;
+    text-decoration: none;
+    border: solid #14279B 1px;
+    padding: 10px;
+    font-family: 'JetBrains Mono', monospace;  
+}
+
+.contact-form input,
+.contact-form textarea {
+  color: #14279B;
+  font-size: 15px;
+  padding: 10px;
+
+}
+
+.btn-primary:hover {
+    background-color: #14279B;
+    color: #E6E6E6;
+}
+
+.description {
+    padding: 10px;
+}
+
+#name:focus,
+#email:focus,
+#subject:focus {
+  outline: none;
+}
+
+
 /* Mobile Layout */
 @media (max-width: 900px) {
-    /* 1. Reset the vertical floating sidebar formatting */
     .social-links {
         position: static !important; /* Removes the floating position */
         writing-mode: horizontal-tb !important; /* Reverts text back to horizontal */

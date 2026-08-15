@@ -1,22 +1,84 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="/home/ashton/ashtonguevarra.github.io/public/favicon.jpg" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Ashton Guevarra — Computer Science student building software and exploring technology." />
     <meta name="theme-color" content="#D0E7E6" />
     <title>Ashton Guevarra — Portfolio</title>
-    <link rel="icon" type="image/png" href="/public/favicon.jpg">
+    <link rel="icon" type="image/png" href="public/favicon.jpg">
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="/home/ashton/ashtonguevarra.github.io/public/favicon.jpg" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
   </head>
 
-<!-- Navigation -->
+  <body>  
+   <section>
+    <!-- Language Stack -->
+      <div class="marquee marquee-reverse" aria-hidden="true">
+        <div class="marquee-track">
+          <span class="marquee-item">JavaScript</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-item">Go</span>
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">HTML/CSS</span>
+          <span class="marquee-item">React</span>
+          <span class="marquee-item">Node.js</span>
+          <span class="marquee-item">SQL</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">Linux</span>
+          <span class="marquee-item">Git</span>
+          <span class="marquee-item">Supabase</span>
+          <span class="marquee-item">JavaScript</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-item">Go</span>
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">HTML/CSS</span>
+          <span class="marquee-item">React</span>
+          <span class="marquee-item">Node.js</span>
+          <span class="marquee-item">SQL</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">Linux</span>
+          <span class="marquee-item">Git</span>
+          <span class="marquee-item">Supabase</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="marquee-item">JavaScript</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-item">Go</span>
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">HTML/CSS</span>
+          <span class="marquee-item">React</span>
+          <span class="marquee-item">Node.js</span>
+          <span class="marquee-item">SQL</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">Linux</span>
+          <span class="marquee-item">Git</span>
+          <span class="marquee-item">Supabase</span>
+          <span class="marquee-item">JavaScript</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-item">Go</span>
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">HTML/CSS</span>
+          <span class="marquee-item">React</span>
+          <span class="marquee-item">Node.js</span>
+          <span class="marquee-item">SQL</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">Linux</span>
+          <span class="marquee-item">Git</span>
+          <span class="marquee-item">Supabase</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Navigation -->
     <nav>
       <div class="nav-inner">
-        <h1 class="icon"><span class="icon-text">ASHTON <br> GUEVARRA</span></h1>
         <p class="logo"><span class="logo-text">[Menu]</span></p>
 
         <ul class="nav-links">
@@ -34,16 +96,21 @@
     </nav>
     <div class="mobile-overlay"></div>
 
+  <!-- contact intro -->
+  <section>
+    <div class="projects-intro">
+        <h1>Get In Touch </h1>
+    </div>
+  </section>
+
   <!-- Contact Form -->
    <main>
      <div class="page">
        <div class="contact-page">
-         <p class="subhead fade-in fade-in-delay-1">
+         <p class="description">
            Let's get in touch! Fill out the form below or reach me through email or social media. I look forward to hearing from you!
          </p>
          <form id="contact-form" class="contact-form contact-form--centered" novalidate>
-           <h3>Send a Message</h3>
-
 
            <!-- Web3Forms access key (hidden) — replace with your key -->
            <input type="hidden" name="access_key" value="45e41d08-b80f-4535-a109-d4b16f36d0c6" />
@@ -65,13 +132,36 @@
              <label for="subject">Subject</label>
              <input type="text" id="subject" name="subject" placeholder="What's this about?" />
            </div>
+
            <div class="form-group">
              <label for="message">Message</label>
-             <textarea id="message" name="message" placeholder="Tell me about your project or idea..." required></textarea>
+             <textarea id="textbox" placeholder="Maximum 1000 words"></textarea>
+             
+            <p><span id="wordCount">0</span> / 1000 words</p>
+
+            <script>
+            const textbox = document.getElementById("textbox");
+            const wordCount = document.getElementById("wordCount");
+
+            textbox.addEventListener("input", function () {
+              let words = this.value.trim().split(/\s+/).filter(Boolean);
+
+              if (words.length > 1000) {
+                words = words.slice(0, 1000);
+                this.value = words.join(" ");
+              }
+
+              wordCount.textContent =
+                this.value.trim() === "" ? 0 : words.length;
+            });
+            </script>
+            
            </div>
-           <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+          
+           <button type="submit" class="btn btn-primary">
              Send Message
            </button>
+
            <div id="form-result" class="form-message" style="display: none;"></div>
          </form>
        </div>
