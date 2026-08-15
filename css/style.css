@@ -83,7 +83,7 @@ li {
 
 .social-links a {
     border: none;
-    padding: 1px;
+    padding: 3px;
 }
 
 .hero-actions {
@@ -92,6 +92,7 @@ li {
 
 .hero-actions a {
     margin-right: 6px;
+    padding: 3px;
 }
 
 .nav-links {
@@ -103,6 +104,14 @@ li {
   
 }
 
+.nav-links a {
+    padding: 3px;
+}
+
+.cert-section a {
+    padding: 3px;
+}
+
 .footer-inner {
     display: flex;
     justify-content: space-between;
@@ -111,7 +120,6 @@ li {
     border-top: 1px solid #14279B;
     background-color: #E6E6E6; 
 
-    /* Fixed Layout Controls */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -234,6 +242,10 @@ li {
     border: solid #14279B 1px;
     margin-bottom: 20px;
 
+}
+
+.blog a {
+    padding: 3px;
 }
 
 .blog img {
