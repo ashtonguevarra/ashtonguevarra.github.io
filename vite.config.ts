@@ -13,9 +13,8 @@ export default defineConfig({
         blog: resolve(__dirname, 'blog.html'),
         contact: resolve(__dirname, 'contact.html'),
         // Blog posts
-        postCiCd: resolve(__dirname, 'blog/setting-up-ci-cd.html'),
-        postGolang: resolve(__dirname, 'blog/building-with-golang.html'),
-        postSystemDesign: resolve(__dirname, 'blog/learning-system-design.html'),
+        postJellyfin: resolve(__dirname, 'blog/jellyfin.html'),
+        postLinuxtheme: resolve(__dirname, 'blog/linux-theme-switcher.html')
       },
     },
   },
