@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="How I built a Linux theme switcher using Bash, pywal16, AWWW, and fzf."
+    />
+    <meta name="theme-color" content="#D0E7E6" />
+
+    <title>Everything Else Follows — Ashton Guevarra</title>
+
+    <link rel="icon" type="image/png" href="public/favicon.jpg">
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    >
+  </head>
+
+  <body>
+
+    <!-- Marquee -->
+    <section>
+      <div class="marquee marquee-reverse" aria-hidden="true">
+        <div class="marquee-track">
+
+          <span class="marquee-item">Thoughts</span>
+          <span class="marquee-item">Experiments</span>
+          <span class="marquee-item">Projects</span>
+          <span class="marquee-item">Hobbies</span>
+          <span class="marquee-item">Life</span>
+
+          <span class="marquee-item">Thoughts</span>
+          <span class="marquee-item">Experiments</span>
+          <span class="marquee-item">Projects</span>
+          <span class="marquee-item">Hobbies</span>
+          <span class="marquee-item">Life</span>
+
+          <span class="marquee-item">Thoughts</span>
+          <span class="marquee-item">Experiments</span>
+          <span class="marquee-item">Projects</span>
+          <span class="marquee-item">Hobbies</span>
+          <span class="marquee-item">Life</span>
+
+          <span class="marquee-item">Thoughts</span>
+          <span class="marquee-item">Experiments</span>
+          <span class="marquee-item">Projects</span>
+          <span class="marquee-item">Hobbies</span>
+          <span class="marquee-item">Life</span>
+
+          <!-- Duplicate for seamless loop -->
+          <span class="marquee-item">Thoughts</span>
+          <span class="marquee-item">Experiments</span>
+          <span class="marquee-item">Projects</span>
+          <span class="marquee-item">Hobbies</span>
+          <span class="marquee-item">Life</span>
+
+          <span class="marquee-item">Thoughts</span>
+          <span class="marquee-item">Experiments</span>
+          <span class="marquee-item">Projects</span>
+          <span class="marquee-item">Hobbies</span>
+          <span class="marquee-item">Life</span>
+
+          <span class="marquee-item">Thoughts</span>
+          <span class="marquee-item">Experiments</span>
+          <span class="marquee-item">Projects</span>
+          <span class="marquee-item">Hobbies</span>
+          <span class="marquee-item">Life</span>
+
+          <span class="marquee-item">Thoughts</span>
+          <span class="marquee-item">Experiments</span>
+          <span class="marquee-item">Projects</span>
+          <span class="marquee-item">Hobbies</span>
+          <span class="marquee-item">Life</span>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+
+        <p class="logo">
+          <span class="logo-text">[Menu]</span>
+        </p>
+
+        <ul class="nav-links">
+          <li><a href="./">01 About</a></li>
+          <li><a href="./projects.html">02 Work</a></li>
+          <li><a href="./blog.html">03 Blog</a></li>
+          <li><a href="./contact.html">04 Contact</a></li>
+        </ul>
+
+      </div>
+    </nav>
+
+
+    <!-- Blog Content -->
+    <main>
+
+      <a href="./blog.html">← Back to Blog</a>
+
+      <p>
+        Linux / Bash / Hyprland / Automation
+      </p>
+
+      <h1>Everything Else Follows.</h1>
+
+      <div class="description">
+        <p>
+          How I got tired of manually recoloring my Linux rice
+          and built a wallpaper-driven theme switcher instead.
+        </p>
+      </div>
+
+
+      <!-- Introduction -->
+      <section>
+
+        <p>
+          I’ve been Linux ricing for quite a while now.
+        </p>
+
+        <p>
+          And as much as I love it, there has always been one part
+          of the process that quietly drives me insane.
+        </p>
+
+        <p>You find the perfect wallpaper.</p>
+
+        <p>You set it.</p>
+
+        <p>Then you look at your terminal.</p>
+
+        <p><strong>Wrong colors.</strong></p>
+
+        <p>Waybar? Wrong colors.</p>
+
+        <p>Rofi? Still living in the previous rice.</p>
+
+        <p>
+          So you open every config file individually, start changing
+          hex codes, realize you don't actually know the exact shade
+          you want, open some color-picker website, steal a palette
+          from your own wallpaper, copy the values back into your
+          configs, reload everything...
+        </p>
+
+        <p>
+          And then, eventually, your desktop is beautiful again.
+        </p>
+
+        <p>
+          Until you decide to change the wallpaper.
+        </p>
+
+        <p>
+          Then you do it <strong>all over again.</strong>
+        </p>
+
+        <p>
+          At some point I started wondering:
+        </p>
+
+        <p>
+          <strong>What if I never had to do this manually again?</strong>
+        </p>
+
+        <p>
+          And that's how a small weekend project turned into a theme
+          switcher for my entire Linux system.
+        </p>
+
+      </section>
+
+
+      <!-- One Wallpaper -->
+      <section>
+
+        <h2>One Wallpaper to Rule Them All</h2>
+
+        <p>
+          The idea was simple.
+        </p>
+
+        <p>
+          I wanted to be able to choose a wallpaper and have
+          <strong>everything else change with it.</strong>
+        </p>
+
+        <p>No hunting for colors.</p>
+
+        <p>No opening five different config files.</p>
+
+        <p>
+          No manually trying to make my terminal match my Waybar,
+          which needs to match Rofi, which needs to match Hyprland,
+          which needs to match the wallpaper.
+        </p>
+
+        <p>Just:</p>
+
+        <p><strong>Pick a wallpaper.</strong></p>
+
+        <p>
+          And let the system figure out the rest.
+        </p>
+
+        <p>
+          My switcher now automatically changes:
+        </p>
+
+        <ul>
+          <li>→ the wallpaper</li>
+          <li>→ the terminal colorscheme</li>
+          <li>→ Waybar</li>
+          <li>→ Rofi</li>
+          <li>→ parts of my Hyprland configuration</li>
+        </ul>
+
+        <p>
+          The entire desktop derives its colors from the image
+          I choose.
+        </p>
+
+        <p>
+          <strong>
+            One command. One wallpaper. One completely different rice.
+          </strong>
+        </p>
+
+      </section>
+
+
+      <!-- Screenshot -->
+      <section class="blog">
+
+        <div>
+          <h2>Before / After</h2>
+
+          <p>
+            Same desktop. Different wallpaper. Different theme.
+          </p>
+        </div>
+
+        <div>
+          <img
+            src="./public/blog/theme-switcher/rice-01.jpg"
+            alt="Linux desktop using one generated color theme"
+            width="300"
+          >
+        </div>
+
+        <div>
+          <img
+            src="./public/blog/theme-switcher/rice-02.jpg"
+            alt="Linux desktop using another generated color theme"
+            width="300"
+          >
+        </div>
+
+      </section>
+
+
+      <!-- Ingredients -->
+      <section>
+
+        <h2>The Ingredients</h2>
+
+        <p>
+          I didn't need to reinvent everything from scratch. A few
+          existing Linux tools already did individual pieces of what
+          I wanted.
+        </p>
+
+        <p>
+          The main ones were <strong>pywal16</strong>,
+          <strong>AWWW</strong>, and <strong>fzf</strong>.
+        </p>
+
+
+        <div class="blog">
+
+          <div>
+            <h2>01 / fzf</h2>
+
+            <p>
+              Gives me an interactive terminal menu for choosing
+              the wallpaper.
+            </p>
+          </div>
+
+          <div>
+            <h2>02 / AWWW</h2>
+
+            <p>
+              Handles actually setting the wallpaper, including
+              the transition animation.
+            </p>
+          </div>
+
+          <div>
+            <h2>03 / pywal16</h2>
+
+            <p>
+              Analyzes the selected wallpaper and generates a
+              matching color palette from it.
+            </p>
+          </div>
+
+        </div>
+
+
+        <p>
+          So instead of me staring at an image and thinking,
+        </p>
+
+        <p>
+          <em>"Is that #7393B3? Maybe #6082B6?"</em>
+        </p>
+
+        <p>
+          the computer does it for me.
+        </p>
+
+        <p>
+          <strong>As it should.</strong>
+        </p>
+
+
+        <div class="blog">
+
+          <div>
+            <h2>Setup</h2>
+
+            <p>
+              pywal16 + AWWW + fzf doing the heavy lifting.
+            </p>
+          </div>
+
+          <div>
+            <img
+              src="./public/blog/theme-switcher/setup-01.jpg"
+              alt="Linux theme switcher setup"
+              width="300"
+            >
+          </div>
+
+          <div>
+            <p>
+              Wallpaper selection, color generation, and desktop
+              refresh all tied together.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- How It Works -->
+      <section>
+
+        <h2>How It Works</h2>
+
+        <p>
+          The entire thing is tied together with a Bash script.
+        </p>
+
+        <p>
+          The flow looks something like this:
+        </p>
+
+        <p>
+          <strong>
+            Run script → check AWWW → find wallpapers → open fzf →
+            choose wallpaper → animate wallpaper change → generate
+            colors → refresh the rest of the desktop.
+          </strong>
+        </p>
+
+
+        <div class="blog">
+
+          <div>
+            <h2>The Script</h2>
+
+            <p>
+              One Bash script connects every part of the process.
+            </p>
+          </div>
+
+          <div>
+            <img
+              src="./public/blog/theme-switcher/script.jpg"
+              alt="Bash theme switching script"
+              width="300"
+            >
+          </div>
+
+          <div>
+            <p>
+              AWWW handles the wallpaper while pywal16 handles
+              the generated palette.
+            </p>
+          </div>
+
+        </div>
+
+
+        <p>
+          When the script starts, it first checks whether
+          <code>awww-daemon</code> is running and starts it if
+          necessary.
+        </p>
+
+        <p>
+          It then searches my wallpaper directory and pipes the
+          available images into <code>fzf</code>, giving me a simple
+          interactive menu right inside the terminal.
+        </p>
+
+        <p>I choose one.</p>
+
+        <p>AWWW applies it with an animation.</p>
+
+        <p>
+          Then pywal16 analyzes that image and generates a new
+          color palette.
+        </p>
+
+        <p>
+          And that's where things get interesting.
+        </p>
+
+      </section>
+
+
+      <!-- Making Everything Listen -->
+      <section>
+
+        <h2>Making Everything Listen</h2>
+
+        <p>
+          Generating the colors was actually the easy part.
+        </p>
+
+        <p>
+          The harder question was:
+        </p>
+
+        <p>
+          <strong>
+            How do I make the rest of my desktop use them?
+          </strong>
+        </p>
+
+        <p>
+          By default, having pywal generate a beautiful palette
+          doesn't magically convince every program on my computer
+          to use it.
+        </p>
+
+        <p>
+          Each component still has its own configuration.
+        </p>
+
+        <p>
+          So instead of hardcoding colors into those configs, I
+          changed them to
+          <strong>reference colors generated by pywal.</strong>
+        </p>
+
+
+        <div class="blog">
+
+          <div>
+            <h2>Hyprland</h2>
+
+            <p>
+              Generated colors can be referenced for things such
+              as my window borders.
+            </p>
+          </div>
+
+          <div>
+            <h2>Waybar</h2>
+
+            <p>
+              Its style.css pulls its background and foreground
+              colors from the generated theme.
+            </p>
+          </div>
+
+          <div>
+            <h2>Rofi</h2>
+
+            <p>
+              Rofi does the same through its .rasi configuration
+              and launcher theme.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="blog">
+
+          <div>
+            <h2>Configuration</h2>
+
+            <p>
+              The colors themselves aren't permanent anymore.
+            </p>
+          </div>
+
+          <div>
+            <img
+              src="./public/blog/theme-switcher/setup-02.jpg"
+              alt="Configuration using colors generated by pywal"
+              width="300"
+            >
+          </div>
+
+          <div>
+            <p>
+              The configs reference whatever palette the current
+              wallpaper generates.
+            </p>
+          </div>
+
+        </div>
+
+
+        <p>
+          The important difference is that the colors themselves
+          are no longer really the permanent part of my rice.
+        </p>
+
+        <p>
+          <strong>The references are.</strong>
+        </p>
+
+        <p>
+          My configs essentially say:
+        </p>
+
+        <p>
+          <em>
+            "Whatever colors the current wallpaper generated,
+            use those."
+          </em>
+        </p>
+
+        <p>
+          So when the wallpaper changes, pywal generates a new
+          palette, the relevant configs pick up those colors, and
+          the desktop refreshes around them.
+        </p>
+
+        <p>
+          <strong>The wallpaper becomes the source of truth.</strong>
+        </p>
+
+      </section>
+
+
+      <!-- Conclusion -->
+      <section>
+
+        <h2>Now I Can Be Indecisive in Peace</h2>
+
+        <p>
+          And that's my favorite part of this project.
+        </p>
+
+        <p>
+          I can completely change the mood of my desktop without
+          spending the next half hour rebuilding the rice around it.
+        </p>
+
+        <p>
+          Dark wallpaper?
+          <strong>The system follows.</strong>
+        </p>
+
+        <p>
+          Something warm?
+          <strong>The system follows.</strong>
+        </p>
+
+        <p>
+          Blue? Purple? Muted? Bright?
+          <strong>The system follows.</strong>
+        </p>
+
+        <p>
+          What used to be a tiny ritual of opening config files,
+          finding color values, copying hex codes and reloading
+          applications has been reduced to choosing an image.
+        </p>
+
+        <p>
+          There's something deeply satisfying about that.
+        </p>
+
+        <p>
+          Not necessarily because this was some enormous or
+          revolutionary project. It wasn't.
+        </p>
+
+        <p>
+          It was just a problem that annoyed me.
+        </p>
+
+        <p>
+          And I think those are sometimes the best projects to build.
+        </p>
+
+        <p>
+          You notice a tiny inconvenience you've accepted for months.
+          You finally get tired enough to do something about it. You
+          write a script, break a few things, read documentation,
+          connect tools that were never necessarily designed as one
+          system...
+        </p>
+
+        <p>
+          And eventually the computer starts behaving the way
+          <strong>you</strong> wanted it to behave.
+        </p>
+
+        <p>
+          That's one of the things I've always loved about Linux.
+        </p>
+
+        <p>
+          You can spend hours customizing something nobody else
+          would care about.
+        </p>
+
+        <p>
+          You can obsess over the color of a border.
+        </p>
+
+        <p>
+          You can write an entire script because you're too lazy
+          to change a few config files manually.
+        </p>
+
+        <p>
+          And somehow, by being lazy enough, you end up learning
+          how your system actually works.
+        </p>
+
+        <p>
+          So now when I get bored of my rice, I don't open a
+          color picker.
+        </p>
+
+        <p>
+          I don't start digging through config files.
+        </p>
+
+        <p>
+          I don't rebuild my theme.
+        </p>
+
+        <p>
+          I pick another wallpaper.
+        </p>
+
+        <p>
+          <strong>Everything else follows.</strong>
+        </p>
+
+      </section>
+
+
+      <!-- End -->
+      <section>
+        <p>
+          Linux / Bash / Hyprland / pywal16 / AWWW / fzf
+        </p>
+
+        <a href="./blog.html">← Back to Blog</a>
+      </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+
+        <p>
+          &copy; 2026 Ashton Guevarra. All rights reserved.
+        </p>
+
+        <a href="./contact.html" class="btn btn-outline">
+          Get in touch
+        </a>
+
+      </div>
+    </footer>
+
+
+    <script type="module" src="./js/main.js"></script>
+
+  </body>
+</html>
