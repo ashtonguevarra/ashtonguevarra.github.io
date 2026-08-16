@@ -173,18 +173,17 @@ li {
     gap:10px;
 }
 
-.project-one,
-.project-two {
+.project-one {
     border: 1px solid #14279B;
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.project-one img,
-.project-two img {
+.project-one img {
     border: 1px solid #14279B;
     padding: 5px;
+    width: 300px;
 }
 
 .project-one a {
