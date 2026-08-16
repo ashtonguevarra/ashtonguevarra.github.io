@@ -1,36 +1,3 @@
-// ===========================
-// Theme
-// ===========================
-function initTheme() {
-  const toggle = document.getElementById('theme-toggle');
-  if (!toggle) return;
-
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    // Update the sun/moon icon
-    toggle.innerHTML = theme === 'dark'
-      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    // Update theme-color meta
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) {
-      meta.setAttribute('content', theme === 'dark' ? '#293681' : '#D0E7E6');
-    }
-  }
-
-  // Determine initial theme
-  const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initial = saved || (prefersDark ? 'dark' : 'light');
-  setTheme(initial);
-
-  // Toggle on click
-  toggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    setTheme(current === 'dark' ? 'light' : 'dark');
-  });
-}
 
 // ===========================
 // Navigation
@@ -218,64 +185,14 @@ async function initBlogPage() {
 }
 
 // ===========================
-// Typewriter Effect
-// ===========================
-function initTypewriter() {
-  const els = document.querySelectorAll('[data-typewriter]');
-  if (!els.length) return;
-
-  els.forEach((el) => {
-    const text = el.textContent.trim();
-    el.textContent = '';
-
-    // Ghost span reserves the full-text space so layout never shifts
-    const ghost = document.createElement('span');
-    ghost.className = 'tw-ghost';
-    ghost.textContent = text;
-    el.appendChild(ghost);
-
-    // Visible span where characters are typed, positioned absolutely over the ghost
-    const visible = document.createElement('span');
-    visible.className = 'tw-visible';
-    el.appendChild(visible);
-
-    let i = 0;
-    const speed = parseInt(el.dataset.speed, 10) || 35;
-
-    function type() {
-      if (i < text.length) {
-        visible.textContent += text.charAt(i);
-        i++;
-        setTimeout(type, speed);
-      } else {
-        el.classList.add('done');
-      }
-    }
-
-    // Respect reduced motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      visible.textContent = text;
-      el.classList.add('done');
-      return;
-    }
-
-    // Start typing after a short delay (let the page settle)
-    setTimeout(type, 400);
-  });
-}
-
-// ===========================
 // Init
 // ===========================
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
   initNav();
   highlightActivePage();
   initForm();
   initScrollAnimations();
   initBlogPage();
-  initTypewriter();
 });
 
 // ===========================
