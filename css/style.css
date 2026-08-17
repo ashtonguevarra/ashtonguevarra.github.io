@@ -75,8 +75,8 @@ li {
 
 .social-links {
     position: absolute;
-    right: 60px; /* Aligns with your body's 50px margin */
-    top: 400px;
+    right: 60px;
+    top: 500px;
 
     transform: translateY(-50%);
     writing-mode: vertical-rl; 
