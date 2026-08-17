@@ -106,878 +106,165 @@
 
 
     <!-- Blog Content -->
-    <main>
-
-      <a href="./blog.html">← Back to Blog</a>
-
-      <p>
-        Homelab / Linux / Jellyfin / Networking
-      </p>
-
-      <h1>From a Laptop and a Dream.</h1>
-
-      <div class="description">
-        <p>
-          How a Marvel binge turned an old laptop and an external
-          hard drive into a private streaming server for my friends.
-        </p>
-      </div>
-
-
-      <!-- Introduction -->
-      <section>
-
-        <p>
-          Call me a nerd, but I’ve always been a huge Marvel fan.
-        </p>
-
-        <p>
-          And with <em>Avengers: Doomsday</em> on the horizon,
-          my friends and I came to the only reasonable conclusion:
-          <strong>we need to binge Marvel again.</strong>
-        </p>
-
-        <p>
-          Not just the Avengers movies. Not just the greatest hits.
-          I’m talking about sitting down and making our way through
-          the whole thing—movies, series, all of it.
-        </p>
-
-        <p>
-          There was only one problem.
-        </p>
-
-        <p>
-          Getting everyone together in the same room every time
-          we wanted to watch something was never going to happen.
-        </p>
-
-        <p>
-          So I thought of a solution.
-        </p>
-
-        <p>
-          <strong>Why not build our own streaming service?</strong>
-        </p>
-
-        <p>
-          Not Netflix. Not Disney+. Something that belongs to us.
-        </p>
-
-        <p>
-          There was just one small complication.
-        </p>
-
-        <p>
-          <strong>
-            All I have is a laptop, an external hard drive,
-            and a dream.
-          </strong>
-        </p>
-
-      </section>
-
-
-      <!-- Building the Server -->
-      <section>
-
-        <h2>Building the Server</h2>
-
-        <p>
-          The first thing I discovered was <strong>Jellyfin</strong>,
-          an open-source media server that basically lets you turn
-          your own computer into your personal streaming service.
-        </p>
-
-        <p>
-          Perfect.
-        </p>
-
-        <p>
-          I had an old laptop. I had an external hard drive. And,
-          perhaps most dangerously, I had access to a Bash shell.
-        </p>
-
-        <p>
-          What could possibly go wrong?
-        </p>
-
-
-        <!-- Jellyfin Setup Screenshot -->
-        <div class="blog">
-
-          <div>
-            <h2>Jellyfin</h2>
-
-            <p>
-              The first step was turning the old laptop into an
-              actual media server.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/jellyfin-setup.jpg"
-              alt="Jellyfin media server setup"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              Jellyfin handles the library, users, playback,
-              metadata, and streaming interface.
-            </p>
-          </div>
-
+    <section class="blog-frame">
+      <div class="blog-panel">
+        <div class="tab-bar">
+          <a href=""> < </a> 
+          <a href="/blog/linux-theme-switcher.html"> > </a>
+          <a href="/blog.html">x</a> 
         </div>
-
-
-        <p>
-          I started learning how to set Jellyfin up and point it
-          toward the external drive where my media library would live.
+        <!--Content Start-->
+        <h2> Jellyfin + qBittorent + Tailscale Media Server Setup </h3>
+        <p>Call me a nerd, but I’ve always been a huge Marvel fan.
+           And with Avengers: Doomsday on the horizon, my friends and I came to the only reasonable conclusion: we need to binge Marvel again.
+          Not just the Avengers movies. Not just the greatest hits. I’m talking about sitting down and making our way through the whole thing—movies, series, all of it.
+          There was only one problem.
+          Getting everyone together in the same room every time we wanted to watch something was never going to happen.
+          So I thought of a solution. Why not build our own streaming service?
+          Not Netflix. Not Disney+. Something that belongs to us.
+          There was just one small complication.
+          All I have is a laptop, an external hard drive, and a dream.
         </p>
 
+        <h3> Building the Server</h3>
         <p>
-          But I quickly ran into one of those problems that sounds
-          incredibly boring until you’re the person dealing with it:
-          <strong>mounting the drive reliably.</strong>
-        </p>
-
-        <p>
-          I didn't want to manually fix everything whenever the
-          drive failed to mount. If I was going to build this thing,
-          I wanted it to behave like an actual server.
-        </p>
-
-        <p>
+          The first thing I discovered was Jellyfin, an open-source media server that basically lets you turn your own computer into your personal streaming service.
+          Perfect.
+          I had an old laptop. I had an external hard drive. And, perhaps most dangerously, I had access to a Bash shell.
+          What could possibly go wrong?
+          [Insert screenshot of Jellyfin setup here]
+          I started learning how to set Jellyfin up and point it toward the external drive where my media library would live.
+          But I quickly ran into one of those problems that sounds incredibly boring until you’re the person dealing with it: mounting the drive reliably.
+          I didn't want to manually fix everything whenever the drive failed to mount. If I was going to build this thing, I wanted it to behave like an actual server.
           So I wrote a Bash script.
         </p>
 
-
-        <!-- Bash Script -->
-        <div class="blog">
-
-          <div>
-            <h2>The Script</h2>
-
-            <p>
-              A small Bash script handles mounting and recovery
-              automatically.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/bash-script.jpg"
-              alt="Bash script used to mount the Jellyfin media drive"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              Mount drive → handle NTFS problems → retry →
-              restart Jellyfin.
-            </p>
-          </div>
-
-        </div>
-
+        <img src="/public/images/gandalf.jpg" alt="Bash Script">
 
         <p>
-          The script automatically mounts my external drive. If it
-          encounters certain NTFS errors, it attempts to repair the
-          filesystem, mounts the drive again, and then restarts Jellyfin.
+          The script automatically mounts my external drive. If it encounters certain NTFS errors, it attempts to repair the filesystem, mounts the drive again, and then restarts Jellyfin.
+          It’s a small thing, but watching a script you wrote actually solve a problem for you is ridiculously satisfying.
+          Suddenly, this beat-up little laptop on my desk wasn't just a laptop anymore.
+          It was the server.  
         </p>
 
-        <p>
-          It’s a small thing, but watching a script you wrote actually
-          solve a problem for you is ridiculously satisfying.
-        </p>
+        <h3> And...We're Live</h2>
 
         <p>
-          Suddenly, this beat-up little laptop on my desk wasn't
-          just a laptop anymore.
-        </p>
-
-        <p>
-          <strong>It was the server.</strong>
-        </p>
-
-      </section>
-
-
-      <!-- We're Live -->
-      <section>
-
-        <h2>And... We're Live</h2>
-
-        <p>
-          Once the external drive mounts successfully and Jellyfin
-          starts, I can open the server and finally see this:
-        </p>
-
-
-        <div class="blog">
-
-          <div>
-            <h2>We're Live</h2>
-
-            <p>
-              After all the setup, the server was finally running.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/sign-in.jpg"
-              alt="Jellyfin sign-in page"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              A browser, an IP address, and my own Jellyfin
-              sign-in page.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
+          Once the external drive mounts successfully and Jellyfin starts, I can open the server and finally see this:
           A sign-in page.
-        </p>
-
-        <p>
           My sign-in page.
-        </p>
-
-        <p>
-          There is something strangely magical about typing an IP
-          address into your browser and being greeted by something
-          that <strong>you built.</strong>
-        </p>
-
-        <p>
+          There is something strangely magical about typing an IP address into your browser and being greeted by something that you built.
           I created my account, signed in, and there it was.
-        </p>
-
-        <p>
           My own little streaming service.
-        </p>
-
-        <p>
           Except there was one glaring problem.
+          A media server without media is essentially a very elaborate empty shelf.
         </p>
 
-        <p>
-          A media server without media is essentially a very
-          elaborate empty shelf.
-        </p>
+        <img src="/public/images/gandalf.jpg" alt="sign in page of jellyfin">
 
-      </section>
-
-
-      <!-- Building the Library -->
-      <section>
-
-        <h2>Building the Library</h2>
+        <h3> Building the Library </h3>
 
         <p>
-          For content I’m legally entitled to store and stream,
-          I use tools such as <strong>qBittorrent</strong> to manage
-          downloads and transfers.
-        </p>
-
-        <p>
-          Once everything was organized and Jellyfin scanned the
-          library, the project finally started looking less like a
-          weekend experiment and more like an actual streaming platform.
-        </p>
-
-
-        <!-- Movies / Series -->
-        <div class="blog">
-
-          <div>
-            <h2>Movies</h2>
-
-            <img
-              src="./public/blog/jellyfin/movies.jpg"
-              alt="Movies library inside Jellyfin"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <h2>Series</h2>
-
-            <img
-              src="./public/blog/jellyfin/series.jpg"
-              alt="Series library inside Jellyfin"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <h2>Library</h2>
-
-            <p>
-              Movies got their own category.
-            </p>
-
-            <p>
-              Series got theirs.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
-          I filled the library with our Marvel binge material,
-          then started adding some personal favorites and classics too.
-        </p>
-
-        <p>
-          Because apparently building a server specifically to binge
-          Marvel wasn't nerdy enough already.
-        </p>
-
-
-        <!-- Library -->
-        <div class="blog">
-
-          <div>
-            <h2>The Library</h2>
-
-            <p>
-              This is where Jellyfin really started feeling like
-              a streaming platform.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/library.jpg"
-              alt="Jellyfin media library with movie posters"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              Posters, descriptions, seasons, episodes, profiles,
-              and watch progress.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
+          For content I’m legally entitled to store and stream, I use tools such as qBittorrent to manage downloads and transfers.
+          Once everything was organized and Jellyfin scanned the library, the project finally started looking less like a weekend experiment and more like an actual streaming platform.
+          Movies got their own category.
+          Series got theirs.
+          I filled the library with our Marvel binge material, then started adding some personal favorites and classics too.
+          Because apparently building a server specifically to binge Marvel wasn't nerdy enough already.
           And this is where Jellyfin really shines.
+          It takes folders sitting on an external hard drive and transforms them into something that actually feels like a streaming service—posters, descriptions, seasons, episodes, watch progress, profiles.
+          Files become a library.
         </p>
 
-        <p>
-          It takes folders sitting on an external hard drive and
-          transforms them into something that actually feels like
-          a streaming service—posters, descriptions, seasons,
-          episodes, watch progress, profiles.
-        </p>
+        <img src="/public/images/gandalf.jpg" alt="screenshot of the library">
 
-        <p>
-          <strong>Files become a library.</strong>
-        </p>
-
-      </section>
-
-
-      <!-- Administrator -->
-      <section>
-
-        <h2>Becoming the Administrator</h2>
+        <h3>Becoming the Administrator</h3>
 
         <p>
           Then there's the dashboard.
-        </p>
-
-
-        <div class="blog">
-
-          <div>
-            <h2>Dashboard</h2>
-
-            <p>
-              Apparently I am a server administrator now.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/dashboard.jpg"
-              alt="Jellyfin administration dashboard"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              Users, connected devices, activity, libraries,
-              and server settings all in one place.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
-          From here, I can see which devices are connected to my
-          server, manage users, monitor activity, and eventually
-          watch my friends appear as they start using it.
-        </p>
-
-        <p>
-          For approximately five minutes, this amount of power makes
-          you feel like the administrator of some enormous data center.
-        </p>
-
-        <p>
-          Then you look beside you and remember the "data center"
-          is an old laptop with an external hard drive plugged into it.
-        </p>
-
-        <p>
+          From here, I can see which devices are connected to my server, manage users, monitor activity, and eventually watch my friends appear as they start using it.
+          For approximately five minutes, this amount of power makes you feel like the administrator of some enormous data center.
+          Then you look beside you and remember the "data center" is an old laptop with an external hard drive plugged into it.
           Still counts.
-        </p>
-
-        <p>
           But the dashboard revealed the next problem.
-        </p>
-
-        <p>
-          Everything worked beautifully
-          <strong>inside my network.</strong>
-        </p>
-
-        <p>
+          Everything worked beautifully inside my network.
           My friends, unfortunately, do not live inside my house.
         </p>
 
-      </section>
+        <img src="/public/images/gandalf.jpg" alt="jellyfin dashboard">
 
-
-      <!-- Tailscale -->
-      <section>
-
-        <h2>The Tailscale Problem</h2>
+        <h3>The Tailscale Problem</h3>
 
         <p>
-          Normally, my Jellyfin server is accessible through an
-          address on my local network.
-        </p>
-
-        <p>
+          Normally, my Jellyfin server is accessible through an address on my local network.
           That's fine when I'm home.
-        </p>
-
-        <p>
           But what happens when I'm somewhere else?
-        </p>
-
-        <p>
           More importantly, how are my friends supposed to connect?
-        </p>
-
-        <p>
-          That rabbit hole led me to <strong>Tailscale.</strong>
-        </p>
-
-
-        <!-- Tailscale -->
-        <div class="blog">
-
-          <div>
-            <h2>Tailscale</h2>
-
-            <p>
-              The part that finally let the server escape my house.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/tailscale.jpg"
-              alt="Tailscale private network with sensitive information redacted"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              A private network connecting approved devices to
-              the server from different networks.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
-          Tailscale creates a private network between approved
-          devices, allowing them to communicate securely even when
-          they're sitting on completely different networks.
-        </p>
-
-        <p>
-          In other words, my server could be sitting at home while
-          I—or one of my friends—could be somewhere else entirely
-          and still connect to it.
-        </p>
-
-        <p>
-          I configured Tailscale, added the machines that could
-          run Jellyfin, and suddenly my ridiculous little project
-          crossed a very important threshold:
-        </p>
-
-        <p>
-          <strong>it escaped my house.</strong>
-        </p>
-
-
-        <!-- Connected Devices -->
-        <div class="blog">
-
-          <div>
-            <h2>Connected</h2>
-
-            <p>
-              Different devices. Different networks. Same server.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/tailscale-devices.jpg"
-              alt="Connected Tailscale devices with private information redacted"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              Sensitive IP addresses, account details, and device
-              identifiers should be blurred before publishing.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
-          Now I could enter the server address from another
-          connected device...
-        </p>
-
-
-        <div class="blog">
-
-          <div>
-            <h2>Remote Access</h2>
-
-            <p>
-              The test that mattered.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/remote.jpg"
-              alt="Jellyfin being accessed remotely"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              The same Jellyfin server, now accessible from
-              another connected network.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
+          That rabbit hole led me to Tailscale.
+          Tailscale creates a private network between approved devices, allowing them to communicate securely even when they're sitting on completely different networks.
+          In other words, my server could be sitting at home while I—or one of my friends—could be somewhere else entirely and still connect to it.
+          I configured Tailscale, added the machines that could run Jellyfin, and suddenly my ridiculous little project crossed a very important threshold:
+          it escaped my house.
+          Now I could enter the server address from another connected device...
           ...and there was Jellyfin.
-        </p>
-
-        <p>
           The same sign-in screen.
-        </p>
-
-        <p>
           The same library.
+          Anywhere.
         </p>
 
-        <p>
-          <strong>Anywhere.</strong>
-        </p>
-
-      </section>
-
-
-      <!-- Avengers Initiative -->
-      <section>
-
-        <h2>The Avengers Initiative</h2>
+        <h3>The Avengers Initiative</h3>
 
         <p>
           Of course, there was one final piece missing.
-        </p>
-
-        <p>
           My friends.
-        </p>
-
-        <p>
           So I created individual Jellyfin accounts for everyone.
-        </p>
-
-
-        <!-- Users -->
-        <div class="blog">
-
-          <div>
-            <h2>Users</h2>
-
-            <p>
-              Every friend gets their own Jellyfin account.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/users.jpg"
-              alt="Jellyfin user accounts with identifying information redacted"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              Separate accounts mean separate profiles and
-              individual watch progress.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
-          Then came perhaps the most technically demanding part
-          of the entire project:
-        </p>
-
-        <p>
-          <strong>
-            explaining to my friends how the hell to connect to it.
-          </strong>
-        </p>
-
-        <p>
-          I wrote them a guide explaining how to install Tailscale
-          and Jellyfin, join the private network, find the correct
-          server, and sign in using their individual accounts.
-        </p>
-
-
-        <!-- Friend Instructions -->
-        <div class="blog">
-
-          <div>
-            <h2>Onboarding</h2>
-
-            <p>
-              Yes, I wrote documentation for my friends.
-            </p>
-          </div>
-
-          <div>
-            <img
-              src="./public/blog/jellyfin/instructions.jpg"
-              alt="Jellyfin setup instructions with private information redacted"
-              width="300"
-            >
-          </div>
-
-          <div>
-            <p>
-              Install Tailscale → connect → open Jellyfin →
-              enter server → sign in.
-            </p>
-          </div>
-
-        </div>
-
-
-        <p>
+          [Insert screenshot of Jellyfin users here — blur usernames or identifying information where appropriate]
+          Then came perhaps the most technically demanding part of the entire project:
+          explaining to my friends how the hell to connect to it.
+          I wrote them a guide explaining how to install Tailscale and Jellyfin, join the private network, find the correct server, and sign in using their individual accounts.
           Was the guide slightly overkill?
-        </p>
-
-        <p>
           Probably.
-        </p>
-
-        <p>
-          Did I essentially write onboarding documentation for my
-          friends so they could watch Spider-Man?
-        </p>
-
-        <p>
+          Did I essentially write onboarding documentation for my friends so they could watch Spider-Man?
           Absolutely.
-        </p>
-
-        <p>
           And I regret nothing.
         </p>
 
-      </section>
-
-
-      <!-- Conclusion -->
-      <section>
-
-        <h2>From a Laptop and a Dream</h2>
+        <h3>From a laptop and a Dream</h3>
 
         <p>
           And that's it.
-        </p>
-
-        <p>
           What started as:
-        </p>
-
-        <p>
-          <em>
-            "Hey, we should binge Marvel before Avengers: Doomsday."
-          </em>
-        </p>
-
-        <p>
-          Somehow I am learning about Jellyfin, Bash scripting,
-          filesystem mounting, NTFS troubleshooting, media management,
-          private networking, remote access, user accounts, and
-          server administration.
-        </p>
-
-        <p>
-          All because I wanted to watch superheroes punch aliens
-          with my friends.
-        </p>
-
-        <p>
+          "Hey, we should binge Marvel before Avengers: Doomsday."
+          Somehow I am learning about Jellyfin, Bash scripting, filesystem mounting, NTFS troubleshooting, media management, private networking, remote access, user accounts, and server administration.
+          All because I wanted to watch superheroes punch aliens with my friends.
           But that's what I love about projects like this.
-        </p>
-
-        <p>
           You begin with a stupidly simple idea.
-        </p>
-
-        <p>
           Then you encounter a problem.
-        </p>
-
-        <p>
           So you learn something.
-        </p>
-
-        <p>
           That solution creates another problem.
-        </p>
-
-        <p>
           So you learn something else.
-        </p>
-
-        <p>
-          And somewhere along the way, without really noticing it,
-          you've built something.
-        </p>
-
-        <p>
-          My setup isn't sitting inside a pristine server rack.
-          There are no enterprise-grade machines humming away in
-          some climate-controlled room. There's no team keeping
-          everything online.
-        </p>
-
-        <p>
+          And somewhere along the way, without really noticing it, you've built something.
+          My setup isn't sitting inside a pristine server rack. There are no enterprise-grade machines humming away in some climate-controlled room. There's no team keeping everything online.
           There's just an old laptop.
-        </p>
-
-        <p>
           An external hard drive.
-        </p>
-
-        <p>
           A Bash script.
-        </p>
-
-        <p>
           A bunch of friends waiting to watch Marvel.
-        </p>
-
-        <p>
-          <strong>And a dream.</strong>
-        </p>
-
-        <p>
-          Now, when one of us feels like watching something, we
-          don't have to be in the same house—or even on the same
-          network.
-        </p>
-
-        <p>
+          And a dream.
+          Now, when one of us feels like watching something, we don't have to be in the same house—or even on the same network.
           We just connect.
-        </p>
-
-        <p>
           Sign in.
-        </p>
-
-        <p>
           Pick a movie.
-        </p>
-
-        <p>
           And press play.
+          Avengers: Doomsday, we're ready.
         </p>
 
-        <p>
-          <strong>Avengers: Doomsday, we're ready.</strong>
-        </p>
 
-      </section>
+        
+        <!--Content-End-->
+      </div>
 
-
-      <!-- End -->
-      <section>
-
-        <p>
-          Jellyfin / Bash / Linux / Tailscale / qBittorrent / Homelab
-        </p>
-
-        <a href="./blog.html">← Back to Blog</a>
-
-      </section>
-
-    </main>
-
+    </section>
 
     <!-- Footer -->
     <footer>
