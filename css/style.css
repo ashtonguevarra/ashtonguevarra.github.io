@@ -389,7 +389,7 @@ textarea::placeholder {
     font-size: 16px;
 }
 
-.blog-panel img {
+.blog-panel img, video {
     padding: 10px;
     border: solid #14279B 1px;
     display: block;
