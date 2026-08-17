@@ -408,6 +408,9 @@ textarea::placeholder {
 .blog-panel pre {
     border: solid #14279B 1px;
     padding: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
 }
 
 .blog-panel code {
@@ -649,9 +652,9 @@ textarea::placeholder {
     }
 }
 
-/*Mobile layout for */
+/*Mobile layout for blog pages */
 
-@media (max-width: 900px) {
+@media (max-width: 1400px) {
     
      .blog-frame {
         width: 100%;
@@ -697,7 +700,7 @@ textarea::placeholder {
     .blog-panel video {
         display: block;
 
-        width: 100%;
+        width: 80%;
         max-width: 100%;
         height: auto;
 
