@@ -69,9 +69,10 @@ li {
 }
 
 .social-links {
-    position: fixed;
+    position: absolute;
     right: 60px; /* Aligns with your body's 50px margin */
-    top: 50%;
+    top: 400px;
+
     transform: translateY(-50%);
     writing-mode: vertical-rl; 
     display: flex;
@@ -137,7 +138,7 @@ li {
     grid-template-columns: 1fr 1fr 1fr 1fr; 
     gap: 50px; 
     align-items: start;
-    margin-top: 40px;
+    margin-top: 100px;
     padding-bottom: 40px;
     border: 1px solid #14279B;
     padding-left: 10px;
