@@ -202,6 +202,10 @@ li {
   padding: 3px;
 }
 
+.project-one b {
+    font-size: 18px;
+}
+
 /* Marquee things */
 
 .marquee {
@@ -269,6 +273,10 @@ li {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap:10px;
+}
+
+.blog b {
+    font-size: 18px;
 }
 
 /* Contact Page */
