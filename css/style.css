@@ -11,6 +11,8 @@
 html {
     width: 100%;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%.marquee;
 }
 
 body {
@@ -207,6 +209,7 @@ li {
     background-color: #14279B;
     padding: 5px;
     color: #E6E6E6;
+    font-size: 15px;
 }
 
 .marquee-track {
@@ -217,6 +220,7 @@ li {
 .marquee-item {
     background-color: #14279B;
     color: #FFFFFF;
+    font-size: 15px;
 }
 
 .marquee-track {
@@ -425,8 +429,16 @@ textarea::placeholder {
 
 @media (max-width: 900px) {
 
+    .marquee {
+        font-size: 15px;
+    }
+
+    .marquee-item {
+        font-size: 15px;
+    }
+
     .marquee-track {
-        animation-duration: 20s;
+        animation-duration: 90s;
     }
 
     .footer-inner {
