@@ -423,6 +423,18 @@ textarea::placeholder {
     display: none;
 }
 
+@media (max-width: 900px) {
+
+    .marquee-track {
+        animation-duration: 20s;
+    }
+
+    .footer-inner {
+        font-size: 12px;
+    }
+
+}
+
 /* Mobile Layout */
 @media (max-width: 900px) {
     .social-links {
