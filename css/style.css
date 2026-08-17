@@ -438,7 +438,7 @@ textarea::placeholder {
     }
 
     .marquee-track {
-        animation-duration: 90s;
+        animation-duration: 40s;
     }
 
     .footer-inner {
