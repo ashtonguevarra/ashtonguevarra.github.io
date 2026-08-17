@@ -50,20 +50,6 @@ function initNav() {
   }, { passive: true });
 }
 
-  // Block Ctrl/Cmd + scroll zoom
-  window.addEventListener("wheel", (e) => {
-    if (e.ctrlKey) e.preventDefault();
-  }, { passive: false });
-
-  // Block keyboard zoom shortcuts
-  window.addEventListener("keydown", (e) => {
-    if (
-      (e.ctrlKey || e.metaKey) &&
-      ["+", "-", "0", "="].includes(e.key)
-    ) {
-      e.preventDefault();
-    }
-  });
 
 function highlightActivePage() {
   const currentPath = window.location.pathname;
@@ -205,3 +191,4 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+// hamburger nav links

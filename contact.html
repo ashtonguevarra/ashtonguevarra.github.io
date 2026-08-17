@@ -6,8 +6,7 @@
 
     <link href="/home/ashton/ashtonguevarra.github.io/public/favicon.jpg" rel="stylesheet">
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Ashton Guevarra — Computer Science student building software and exploring technology." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />    <meta name="description" content="Ashton Guevarra — Computer Science student building software and exploring technology." />
     <meta name="theme-color" content="#D0E7E6" />
     <title>Ashton Guevarra — Portfolio</title>
     <link rel="icon" type="image/png" href="public/favicon.jpg">
@@ -15,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+    <script type="module" src="/js/main.js"></script>
   </head>
 
   <body>  
@@ -81,6 +82,15 @@
       <div class="nav-inner">
         <p class="logo"><span class="logo-text">[Menu]</span></p>
 
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+
         <ul class="nav-links">
 
           <li><a href="./">01 About</a></li>
@@ -135,8 +145,12 @@
 
            <div class="form-group">
              <label for="message">Message</label>
-             <textarea id="textbox" placeholder="Maximum 1000 words"></textarea>
-             
+              <textarea
+                id="textbox"
+                name="message"
+                placeholder="Maximum 1000 words"
+                required
+              ></textarea>         
             <p><span id="wordCount">0</span> / 1000 words</p>
 
             <script>
