@@ -95,10 +95,10 @@
         </p>
 
         <ul class="nav-links">
-          <li><a href="./">01 About</a></li>
-          <li><a href="./projects.html">02 Work</a></li>
-          <li><a href="./blog.html">03 Blog</a></li>
-          <li><a href="./contact.html">04 Contact</a></li>
+          <li><a href="/index.html">01 About</a></li>
+          <li><a href="/projects.html">02 Work</a></li>
+          <li><a href="/blog.html">03 Blog</a></li>
+          <li><a href="/contact.html">04 Contact</a></li>
         </ul>
 
       </div>
@@ -139,7 +139,13 @@
           So I wrote a Bash script.
         </p>
 
-        <img src="/public/images/gandalf.jpg" alt="Bash Script">
+        <pre><code>#!/bin/bash
+
+        if ! mountpoint -q /mnt/media/ashton; then
+            sudo mount -t ntfs3 -o force /dev/sdd2 /mnt/media/ashton
+        fi
+
+        sudo systemctl restart jellyfin</code></pre>
 
         <p>
           The script automatically mounts my external drive. If it encounters certain NTFS errors, it attempts to repair the filesystem, mounts the drive again, and then restarts Jellyfin.
@@ -161,7 +167,7 @@
           A media server without media is essentially a very elaborate empty shelf.
         </p>
 
-        <img src="/public/images/gandalf.jpg" alt="sign in page of jellyfin">
+        <img src="/public/images/signin.jpg" alt="sign in page of jellyfin">
 
         <h3> Building the Library </h3>
 
@@ -177,7 +183,7 @@
           Files become a library.
         </p>
 
-        <img src="/public/images/gandalf.jpg" alt="screenshot of the library">
+        <img src="/public/images/library.jpg" alt="screenshot of the library">
 
         <h3>Becoming the Administrator</h3>
 
@@ -192,7 +198,7 @@
           My friends, unfortunately, do not live inside my house.
         </p>
 
-        <img src="/public/images/gandalf.jpg" alt="jellyfin dashboard">
+        <img src="/public/images/dashboard.jpg" alt="jellyfin dashboard">
 
         <h3>The Tailscale Problem</h3>
 

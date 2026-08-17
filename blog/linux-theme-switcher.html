@@ -95,10 +95,10 @@
         </p>
 
         <ul class="nav-links">
-          <li><a href="./">01 About</a></li>
-          <li><a href="./projects.html">02 Work</a></li>
-          <li><a href="./blog.html">03 Blog</a></li>
-          <li><a href="./contact.html">04 Contact</a></li>
+          <li><a href="/index.html">01 About</a></li>
+          <li><a href="/projects.html">02 Work</a></li>
+          <li><a href="/blog.html">03 Blog</a></li>
+          <li><a href="/contact.html">04 Contact</a></li>
         </ul>
 
       </div>
@@ -137,7 +137,51 @@
         <p><b>AWWW</b> handles changing the wallpaper and gives me animated transitions.</p>
         <p><b>fzf</b> gives me a simple interactive menu where I can select which wallpaper I want.</p>
 
-        <img src="/public/images/gandalf.jpg" alt="Script Screenshot">
+        <pre><code>#!/bin/bash
+
+        WALLPAPER_DIR="$HOME/wallpapergif"
+
+        # Start awww daemon if not running
+        if ! pgrep -x "awww-daemon" &gt;/dev/null; then
+            echo "Starting awww daemon..."
+            awww-daemon &amp;
+            sleep 0.5
+        fi
+
+        # menu selector
+        SELECTION=$(
+            find "$WALLPAPER_DIR" -type f \
+                \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) |
+            fzf \
+                --prompt="Select Theme For Ashton: " \
+                --height=40% \
+                --layout=reverse \
+                --border # settings for fzf
+        )
+
+        # Exit if nothing selected
+        [ -z "$SELECTION" ] &amp;&amp; exit 0
+
+        # Apply wallpaper
+        awww img "$SELECTION" \
+            --transition-type wipe \
+            --transition-step 120 \
+            --transition-fps 165
+
+        # Generate terminal/theme colors
+        if command -v wal &gt;/dev/null 2&gt;&amp;1; then # checks if pywal is installed
+
+            wal -i "$SELECTION" -q # generate colors of the wallpaper
+
+            if file --mime-type -b "$SELECTION" | grep -q "gif"; then
+                magick "${SELECTION}[0]" /tmp/rofi_bg.png 2&gt;/dev/null
+            else
+                cp -f "$SELECTION" /tmp/rofi_bg.png 2&gt;/dev/null
+            fi
+
+            # Refresh Rofi theme cache
+            touch "$HOME/.cache/wal/colors-rofi-dark.rasi"
+        fi</code></pre>
 
         <h3>how the Script Works</h3>
 
@@ -154,7 +198,12 @@
         My Rofi theme does something similar through its .rasi files.
         And in Hyprland, I can reference generated colors for things like the window borders.
         </p>
-        <img src="" alt="configuration screenshot">
+
+        <br>
+
+        <p><i>~/.cache/wal</i></h3>
+        <img src="/public/images/cache.png" alt="terminal screenshot">
+
         <p>Because the configs reference the generated palette, I don't have to manually edit them every time.
         When I choose another wallpaper, pywal generates another palette and the rest of the desktop updates to match it.
         </p>

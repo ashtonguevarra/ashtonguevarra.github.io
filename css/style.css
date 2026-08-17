@@ -394,7 +394,16 @@ textarea::placeholder {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width: 50%;
+}
+
+.blog-panel pre {
+    border: solid #14279B 1px;
+    padding: 10px;
+}
+
+.blog-panel code {
+    color:#14279B;
 }
 
 /* Mobile Layout */
